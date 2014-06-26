@@ -25,14 +25,88 @@ function Fonctions(){
 			}
 		}
 		return mapTaches;
-	};
-
-	var getMaxChart = function(tache){
+	},
+	getMaxChart = function(tache){
 		if(tache != null){
 			var valeurChiffrageInitial = parseFloat(tache.chiffrageInitial()),
 			valeurChiffrageConsomme = parseFloat(tache.chiffrageConsomme()),
 			valeurRAF = parseFloat(tache.chiffrageResteAFaire());
 			return (valeurChiffrageInitial >= valeurChiffrageConsomme + valeurRAF) ? valeurChiffrageInitial : valeurChiffrageConsomme + valeurRAF;
+		}
+	},
+	miseAJourDiagramme = function(tache){
+		if(tache != null){
+			var categories = [],
+				serieDev = [],
+				serieCorrection = [],
+				dateDebut = null, dateFin = null,
+				now = new Date(),
+				nbCategories = 0, i = 0;
+			if($.isNullOrEmpty(tache.dateDebutDev())){
+				dateDebut = ($.isNullOrEmpty(tache.dateDebutCorrection())) ? now.addDays(-1) : tache.dateDebutCorrection();
+			}else{
+				if($.isNullOrEmpty(tache.dateDebutCorrection())){
+					dateDebut = tache.dateDebutDev();
+				}else{
+					dateDebut = (tache.dateDebutDev() < tache.dateDebutCorrection()) ? tache.dateDebutDev() : tache.dateDebutCorrection();
+				}
+			}
+			dateDebut = new Date(dateDebut);
+			if($.isNullOrEmpty(tache.dateFinDev())){
+				if($.isNullOrEmpty(tache.dateFinCorrection())){
+					var consommation = parseFloat(tache.chiffrageConsomme()) + parseFloat(tache.chiffrageResteAFaire()) + parseFloat(tache.chiffrageCorrection());
+					if(consommation < 2){
+						consommation = now.addDays(2);
+					}
+					dateFin = new Date(dateDebut).addDays(consommation);
+				}
+			}else{
+				if($.isNullOrEmpty(tache.dateFinCorrection())){
+					dateFin = tache.dateFinDev();
+				}else{
+					dateFin = (tache.dateFinDev() > tache.dateFinCorrection()) ? tache.dateFinDev() : tache.dateFinCorrection();
+				}
+			}
+			dateFin = new Date(dateFin);
+			nbCategories = Math.floor(new Date(dateFin - dateDebut).getTime() / 86400000) + 1;
+			var dateCategorie = new Date(dateDebut);
+			for(i; i < nbCategories; i++){
+					dateCategorieSerie = new Date(dateCategorie.getFullYear() + "-" + dateCategorie.getMonth() + "-" + dateCategorie.getDate()),
+					sommeDeveloppement = 0, sommeCorrection = null;
+				categories.push(dateCategorie.getLitteralDate() + "/" + dateCategorie.getLitteralMonth());
+				for(var h = 0; h < tache.historique().length; h++){
+					var dateHistorique = new Date(tache.historique()[h].dateHistorique()),
+						dateSerie = new Date(dateHistorique.getFullYear() + "-" + dateHistorique.getMonth() + "-" + dateHistorique.getDate());
+					if(dateCategorieSerie.getTime() == dateSerie.getTime()){
+						if(tache.historique()[h].codeAction() == 0){
+							sommeDeveloppement = (sommeDeveloppement == null) ? tache.historique()[h].chiffrage() : sommeDeveloppement + tache.historique()[h].chiffrage();
+						}else if(tache.historique()[h].codeAction() == 1){
+							sommeCorrection = (sommeCorrection == null) ? tache.historique()[h].chiffrage() : sommeCorrection + tache.historique()[h].chiffrage();
+						}
+					}
+				}
+				serieDev.push(sommeDeveloppement);
+				serieCorrection.push(sommeCorrection);
+				dateCategorie.addDays(1);
+			}
+
+			$('#chartdiv').css({"width" : $("#modalTache").width() * .85 }).highcharts({
+				chart: { type: 'spline' },
+				title: { text: null },
+				xAxis: { categories: categories },
+				yAxis: {
+					title: { text: 'Jours'  },
+					plotLines: [{ value: 0, width: 1, color: '#808080' }]
+				},
+				tooltip: { valueSuffix: 'jour(s)' },
+				series: [{
+					name: 'Développement',
+					data: serieDev
+				},{
+					name: 'Corrections',
+					data: serieCorrection
+				}]
+			});
 		}
 	};
 
@@ -84,6 +158,8 @@ function Fonctions(){
 			vm.svgDataTaches.chiffrageInitial(ko.toJS(tachePointee.chiffrageInitial()));
 			vm.svgDataTaches.chiffrageConsomme(ko.toJS(tachePointee.chiffrageConsomme()));
 			vm.svgDataTaches.chiffrageResteAFaire(ko.toJS(tachePointee.chiffrageResteAFaire()));
+			vm.svgDataTaches.chiffrageCorrection(ko.toJS(tachePointee.chiffrageCorrection()));
+			miseAJourDiagramme(dataTache);
 		}
 		$("#modalTache").modal("show");
 	};

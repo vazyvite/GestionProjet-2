@@ -4,9 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title></title>
-		<link rel="stylesheet" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
 	<body>
 		<!-- Modales -->
@@ -21,6 +21,7 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-xs-12">
+								<div id="chartdiv" style=""></div>
 								<progress data-bind="attr: { 'max': parseFloat(chiffrageConsomme()) + parseFloat(chiffrageResteAFaire()), 'value': chiffrageConsomme() }"></progress>
 							</div>
 						</div>
@@ -148,6 +149,7 @@
 		<script src="./js/core/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/core/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/core/libs/knockout.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/libs/highcharts.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/core/jsExtends.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/core/coreEnums.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/core/core.js" type="text/javascript" charset="utf-8"></script>
@@ -155,6 +157,5 @@
 		<script src="./js/services.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/vueModel.js" type="text/javascript" charset="utf-8"></script>
 		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
-		<script src="./js/vmToJsonGenerator.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
