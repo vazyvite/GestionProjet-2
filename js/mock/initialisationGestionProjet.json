@@ -9,6 +9,11 @@
 			"chiffrageConsomme": 0,
 			"chiffrageResteAFaire": 5,
 			"chiffrageCorrection": 0,
+			"historique": [],
+			"dateDebutDev": "",
+			"dateFinDev": "",
+			"dateDebutCorrection": "",
+			"dateFinCorrection": "",
 			"ressource": {
 				"idRessource": "R0001",
 				"nomRessource": "nom",
@@ -23,6 +28,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",
@@ -37,6 +47,11 @@
 					"chiffrageConsomme": 0,
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
+					"historique": [],
+					"dateDebutDev": "",
+					"dateFinDev": "",
+					"dateDebutCorrection": "",
+					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "nom",
@@ -51,6 +66,11 @@
 						"chiffrageConsomme": 0,
 						"chiffrageResteAFaire": 5,
 						"chiffrageCorrection": 0,
+						"historique": [],
+						"dateDebutDev": "",
+						"dateFinDev": "",
+						"dateDebutCorrection": "",
+						"dateFinCorrection": "",
 						"ressource": {
 							"idRessource": "R0001",
 							"nomRessource": "nom",
@@ -66,6 +86,35 @@
 						"chiffrageConsomme": 0,
 						"chiffrageResteAFaire": 5,
 						"chiffrageCorrection": 0,
+						"historique": [{
+							"dateHistorique": 1402012800000,
+							"codeAction": 0,
+							"chiffrage": 0.25
+						},{
+							"dateHistorique": 1402099200000,
+							"codeAction": 0,
+							"chiffrage": 0.5
+						},{
+							"dateHistorique": 1402272000000,
+							"codeAction": 0,
+							"chiffrage": 1
+						},{
+							"dateHistorique": 1402358400000,
+							"codeAction": 0,
+							"chiffrage": 1.75
+						},{
+							"dateHistorique": 1402790400000,
+							"codeAction": 1,
+							"chiffrage": 0.5
+						},{
+							"dateHistorique": 1402876800000,
+							"codeAction": 1,
+							"chiffrage": 1
+						}],
+						"dateDebutDev": 1402012800000,
+						"dateFinDev": 1402358400000,
+						"dateDebutCorrection": 1402790400000,
+						"dateFinCorrection": 1402876800000,
 						"ressource": {
 							"idRessource": "R0001",
 							"nomRessource": "nom",
@@ -82,6 +131,11 @@
 					"chiffrageConsomme": 0,
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
+					"historique": [],
+					"dateDebutDev": "",
+					"dateFinDev": "",
+					"dateDebutCorrection": "",
+					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "nom",
@@ -97,6 +151,11 @@
 					"chiffrageConsomme": 0,
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
+					"historique": [],
+					"dateDebutDev": "",
+					"dateFinDev": "",
+					"dateDebutCorrection": "",
+					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "nom",
@@ -113,6 +172,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",
@@ -128,51 +192,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000005",
-				"descriptionTache": "description de la tache T00000005",
-				"nomTache": "Tache T00000005 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000006",
-				"descriptionTache": "description de la tache T00000006",
-				"nomTache": "Tache T00000006 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000007",
-				"descriptionTache": "description de la tache T00000007",
-				"nomTache": "Tache T00000007 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",
@@ -188,6 +212,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",
@@ -203,216 +232,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000010",
-				"descriptionTache": "description de la tache T00000010",
-				"nomTache": "Tache T00000010 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000011",
-				"descriptionTache": "description de la tache T00000011",
-				"nomTache": "Tache T00000011 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000012",
-				"descriptionTache": "description de la tache T00000012",
-				"nomTache": "Tache T00000012 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000013",
-				"descriptionTache": "description de la tache T00000013",
-				"nomTache": "Tache T00000013 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000014",
-				"descriptionTache": "description de la tache T00000014",
-				"nomTache": "Tache T00000014 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000015",
-				"descriptionTache": "description de la tache T00000015",
-				"nomTache": "Tache T00000015 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000016",
-				"descriptionTache": "description de la tache T00000016",
-				"nomTache": "Tache T00000016 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000017",
-				"descriptionTache": "description de la tache T00000017",
-				"nomTache": "Tache T00000017 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000018",
-				"descriptionTache": "description de la tache T00000018",
-				"nomTache": "Tache T00000018 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000019",
-				"descriptionTache": "description de la tache T00000019",
-				"nomTache": "Tache T00000019 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000020",
-				"descriptionTache": "description de la tache T00000020",
-				"nomTache": "Tache T00000020 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000021",
-				"descriptionTache": "description de la tache T00000021",
-				"nomTache": "Tache T00000021 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000022",
-				"descriptionTache": "description de la tache T00000022",
-				"nomTache": "Tache T00000022 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
-				"ressource": {
-					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
-				},
-				"idTacheParent": "P0000001",
-				"listeTaches": []
-			},{
-				"idTache": "T00000023",
-				"descriptionTache": "description de la tache T00000023",
-				"nomTache": "Tache T00000023 Test",
-				"chiffrageInitial": 10,
-				"chiffrageConsomme": 0,
-				"chiffrageResteAFaire": 5,
-				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",
@@ -428,6 +252,11 @@
 				"chiffrageConsomme": 0,
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
+				"historique": [],
+				"dateDebutDev": "",
+				"dateFinDev": "",
+				"dateDebutCorrection": "",
+				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "nom",

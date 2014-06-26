@@ -6,6 +6,17 @@ var vm;
 	var VueModel = function(){
 		var self = this;
 
+		/**
+		 * codeAction : 0: développement, 1: corrections
+		 *
+		 */
+		var Historique = function Historique(){
+			var that = this;
+			that.dateHistorique = ko.observable();
+			that.codeAction = ko.observable();
+			that.chiffrage = ko.observable();
+		};
+
 		var Ressource = function Ressource(){
 			var that = this;
 			that.idRessource = ko.observable();
@@ -25,9 +36,16 @@ var vm;
 			that.idTacheParent = ko.observable();
 			that.descriptionTache = ko.observable();
 			that.listeTaches = ko.observableArray([]).extend({ arrayTransformer: function(){ return new Tache(); }});
+			that.historique = ko.observableArray([]).extend({ arrayTransformer: function(){ return new Historique(); }});
+			that.dateDebutDev = ko.observable();
+			that.dateFinDev = ko.observable();
+			that.dateDebutCorrection = ko.observable();
+			that.dateFinCorrection = ko.observable();
 			that.chiffrageConsomme.subscribe(function(valeur){
 				if(that.idTacheParent() != null){
-					var raf = parseFloat(that.chiffrageResteAFaire());
+					var raf = parseFloat(that.chiffrageResteAFaire()),
+						historique = self.newHistorique(),
+						now = new Date();
 					if(parseFloat(valeur) > parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
 						raf = raf - (parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
 					}else if(parseFloat(valeur) < parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
@@ -39,6 +57,19 @@ var vm;
 					that.chiffrageResteAFaire(raf);
 					vm.svgDataTaches.chiffrageConsomme(valeur);
 					vm.svgDataTaches.chiffrageResteAFaire(raf);
+					// création d'une entrée dans l'historique
+					historique.dateHistorique(now);
+					historique.codeAction(0);
+					historique.chiffrage(parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
+					that.historique.push(historique);
+					// ajout de la date de début des dévs
+					if(that.dateDebutDev() == null){
+						that.dateDebutDev(now);
+					}
+					// ajout de la date de fin de dév
+					if(parseFloat(that.chiffrageResteAFaire()) == 0){
+						that.dateFinDev(now);
+					}
 					fn.miseAJourTacheParent(that);
 				}
 			});
@@ -46,6 +77,20 @@ var vm;
 				if(that.idTacheParent() != null){
 					fn.miseAJourTacheParent(that);
 				}
+			});
+			that.chiffrageCorrection.subscribe(function(valeur){
+				var historique = self.newHistorique(),
+					now = new Date();
+				// création d'une entrée dans l'historique
+				historique.dateHistorique(now);
+				historique.codeAction(1);
+				historique.chiffrage(parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageCorrection()));
+				// ajout de la date de début des corrections
+				if(that.dateDebutCorrection() == null){
+					that.dateDebutCorrection(now);
+				}
+				// ajout de la date de fin des corrections
+				that.dateFinCorrection(now);
 			});
 		};
 
@@ -55,11 +100,15 @@ var vm;
 		self.newTache = function(){
 			return new Tache();
 		};
+		self.newHistorique = function(){
+			return new Historique();
+		};
 
 		self.svgDataTaches = {
 			chiffrageInitial: ko.observable(),
 			chiffrageConsomme: ko.observable(),
-			chiffrageResteAFaire: ko.observable()
+			chiffrageResteAFaire: ko.observable(),
+			chiffrageCorrection: ko.observable()
 		};
 
 		/*var Projet = function(){
