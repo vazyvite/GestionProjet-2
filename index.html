@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="./css/style.css">
+	</head>
+	<body>
+		<!-- Modales -->
+		<div id="modalTache" class="modal fade" data-bind="with: gestionProjet.tachePointee" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">
+							<input type="text" class="readAspect" data-bind="value: nomTache" placeholder="Nom de la tache" />
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<progress data-bind="attr: { 'max': parseFloat(chiffrageConsomme()) + parseFloat(chiffrageResteAFaire()), 'value': chiffrageConsomme() }"></progress>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-5" id="blocChiffrage">
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label class="col-xs-4 control-label" for="chargeConsommeeTache">Consommée :</label>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" id="chargeConsommeeTache" step="0.25" min="0" data-bind="value: chiffrageConsomme, disable: fn.ui.disableChargeConsommee($data) ">
+										</div>
+										<label class="col-xs-4 control-label" for="chargeEstimeeTache">Estimation initiale :</label>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" id="chargeEstimeeTache" step="0.25" min="0" data-bind="value: chiffrageInitial, disable: fn.ui.disableEstimationInitiale($data)">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-4 control-label" for="rafTache">RAF :</label>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" id="rafTache" step="0.25" min="0" data-bind="value: chiffrageResteAFaire, disable: fn.ui.disableRAF($data)">
+										</div>
+										<label class="col-xs-4 control-label" for="chargeCorrections">Corrections :</label>
+										<div class="col-xs-2">
+											<input type="number" class="form-control" id="chargeCorrections" step="0.25" min="0" data-bind="value: chiffrageCorrection">
+										</div>
+									</div>
+								</form>
+								<div>
+									<textarea class="readAspect" data-bind="value: descriptionTache" placeholder="description"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" id="modalTacheValidation">Valider</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- / Modales -->
+
+
+		<div id="mainApp" class="container-fluid">
+			<header data-bind="with: app">
+				<div data-bind="text: fn.ui.appName($data)"></div>
+			</header>
+
+			<article data-bind="with: gestionProjet">
+				<div class="ongletContainer">
+					<ul>
+						<li data-bind="css: { selected: $root.panelGestionProjet() == '0' }"><label><input type="radio" name="onglet" data-bind="checked: $root.panelGestionProjet" value="0" />Projets</label></li>
+						<li data-bind="css: { selected: $root.panelGestionProjet() == '1' }"><label><input type="radio" name="onglet" data-bind="checked: $root.panelGestionProjet" value="1" />Ressources</label></li>
+					</ul>
+				</div>
+
+				<!-- ko if: $root.panelGestionProjet() == '0' -->
+					<!-- ko if: tacheSelectionnee() != null -->
+						<div class="container-fluid tachesContainer" data-bind="with: tacheSelectionnee" data-columns>
+							<div class="row titreTacheParent">
+								<span class="col-xs-1">
+									<!-- ko if: idTacheParent() != null -->
+										<button class="btn btn-default" id="btnRetourContext">&lt; Retour</button>
+									<!-- /ko -->
+								</span>
+								<h3 class="col-xs-10"><span data-bind="text: nomTache()"></span><span class="pull-right" data-bind="text: fn.ui.calculerAvancementTacheParent($data) + '%'"></span></h3>
+							</div>
+
+							<div>
+								<!-- ko foreach: listeTaches() -->
+									<div class="tache" data-bind="css: {
+											'todoTask': fn.ui.conditionClassToDoTask($data),
+											'runningTask': fn.ui.conditionClassRunningTask($data),
+											'finishedTask': fn.ui.conditionClassFinishedTask($data) }, attr: { 'data-tache': idTache() }">
+										<div class="iconsLine">
+											<!-- ko if: listeTaches().length -->
+												<span class="glyphicon glyphicon-th accessChildrenTaches" title="Accéder aux sous tâches"></span>
+											<!-- /ko -->
+											<!-- ko if: !listeTaches().length -->
+												<span class="glyphicon glyphicon-plus createChild" title="Ajouter une sous tâche"></span>
+											<!-- /ko -->
+											<span class="glyphicon glyphicon-trash deleteTache" title="Supprimer la tâche"></span>
+											<span class="pull-right pourcentageAvancement" data-bind="text: fn.ui.calculerAvancementTache($data) + '%'"></span>
+										</div>
+										<div class="titreTache" data-bind="text: nomTache(), attr: { 'title': nomTache() }"></div>
+									</div>
+								<!-- /ko -->
+								<div class="tache createTask btn btn-default">
+									<div class="createContainer">
+										<span class="glyphicon glyphicon-plus" title="Ajouter une tâche"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					<!-- /ko -->
+				<!-- /ko -->
+
+				<!-- ko if: $root.panelGestionProjet() == '1' -->
+					<div class="container-fluid tachesContainer" data-bind="with: $root.gestionProjet">
+						<div class="row titreTacheParent">
+							<span class="col-xs-1"></span>
+							<h3 class="col-xs-10">Ressources</h3>
+						</div>
+
+						<div class="row">
+							<table>
+								<thead>
+									<tr>
+										<th>Ressource</th>
+									</tr>
+								</thead>
+								<tbody data-bind="foreach: listeRessources">
+									<tr>
+										<td><span data-bind="text: prenomRessource()"></span> <span data-bind="text: nomRessource()"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				<!-- /ko -->
+			</article>
+
+			<footer class="row" data-bind="with: app"></footer>
+		</div>
+
+		<script src="./js/core/libs/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/libs/knockout.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/jsExtends.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/coreEnums.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/core/core.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/fonctions.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/services.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/vueModel.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/vmToJsonGenerator.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>

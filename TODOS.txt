@@ -1,0 +1,20 @@
+TODOS
+
+TODO TACHES
+x Ajouter une tache
+	x calculer l'impact sur l'avancement de la tache parent
+x Supprimer une tache
+	x calculer l'impact sur l'avancement de la tache parent
+x Modifier une tache
+	x calculer l'impact sur l'avancement de la tache parent
+x Ajouter une sous-tâche
+	x calculer l'impact sur l'avancement de la tache parent
+x Accéder aux sous taches
+x Accéder à la tache parent
+- initialiser l'avancement des taches parent
+
+TODO Ressources
+- Lister les ressources
+- Ajouter une ressource à une tache
+- Retirer une ressource à une tache
+- Lier les ressources avec leurs taches associées

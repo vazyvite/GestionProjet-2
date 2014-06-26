@@ -1,0 +1,1284 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"prepen",
+				"prependTo	.prependTo()"
+			],
+			[
+				"index",
+				"indexScreen"
+			],
+			[
+				"scree",
+				"screenContainer"
+			],
+			[
+				"wrap",
+				"wrapAll	wrapAll"
+			],
+			[
+				"elem",
+				"element"
+			],
+			[
+				"scre",
+				"screen"
+			],
+			[
+				"class",
+				"classNames"
+			],
+			[
+				"curre",
+				"currentScreen"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"ob",
+				"observable"
+			],
+			[
+				"num",
+				"numberList"
+			],
+			[
+				"liste",
+				"listeChaines"
+			],
+			[
+				"elemen",
+				"elementsAAfficher"
+			],
+			[
+				"serv",
+				"server"
+			],
+			[
+				"div",
+				"div	Tag"
+			],
+			[
+				"loa",
+				"loadJsScript"
+			],
+			[
+				"ha",
+				"hasOwnProperty"
+			],
+			[
+				"data",
+				"dataJSON"
+			],
+			[
+				"obser",
+				"observable"
+			],
+			[
+				"Web",
+				"Webdesigner"
+			],
+			[
+				"In",
+				"Infographie"
+			],
+			[
+				"Ergon",
+				"Ergonomie"
+			],
+			[
+				"HTML",
+				"HTML5"
+			],
+			[
+				"JSJQ",
+				"JSJQDT"
+			],
+			[
+				"Dé",
+				"Développeur"
+			],
+			[
+				"Maq",
+				"Maquet"
+			],
+			[
+				"Maque",
+				"Maquet"
+			],
+			[
+				"elems",
+				"elements"
+			],
+			[
+				"max",
+				"maxLimitesY"
+			],
+			[
+				"maxLim",
+				"maxLimitesY"
+			],
+			[
+				"caluler",
+				"calculerDiagrammeScale"
+			],
+			[
+				"svg",
+				"svg_width"
+			],
+			[
+				"att",
+				"attributs"
+			],
+			[
+				"codeCom",
+				"codeCompetenceTechnique"
+			],
+			[
+				"listeComp",
+				"listeCompetencesParRole"
+			],
+			[
+				"code",
+				"codeCompetenceTechnique"
+			],
+			[
+				"listeCompte",
+				"listeCompetencesTechniques"
+			],
+			[
+				"listeCompete",
+				"listeCompetencesTechniques"
+			],
+			[
+				"listeCompetes",
+				"listeCompetencesFormation"
+			],
+			[
+				"listeCom",
+				"listeCompetencesParRole"
+			],
+			[
+				"listeC",
+				"listeCompetencesParRole"
+			],
+			[
+				"listeRoles",
+				"listeRolesProjet"
+			],
+			[
+				"libelleC",
+				"libelleCompetenceTechnique"
+			],
+			[
+				"lsiteR",
+				"listeRolesProjet"
+			],
+			[
+				"listeRole",
+				"listeRolesProjet"
+			],
+			[
+				"listeR",
+				"listeRolesProjet"
+			],
+			[
+				"Rol",
+				"RolesProjet"
+			],
+			[
+				"role",
+				"role"
+			],
+			[
+				"get",
+				"getCodeRole_Tous"
+			],
+			[
+				"en",
+				"enums"
+			],
+			[
+				"tri",
+				"trigger	trigger"
+			],
+			[
+				"m",
+				"margin-top"
+			],
+			[
+				"emp",
+				"employeur"
+			],
+			[
+				"empl",
+				"employeurActuel"
+			],
+			[
+				"libelle",
+				"libelleLongEmployeur"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"pro",
+				"proto	Prototype"
+			],
+			[
+				"dat",
+				"dateFin"
+			],
+			[
+				"pr",
+				"proto	Prototype"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"subst",
+				"substring"
+			],
+			[
+				"date",
+				"dateFr"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"b",
+				"box-shadow"
+			],
+			[
+				"sub",
+				"subscribe"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"disp",
+				"display"
+			],
+			[
+				"service",
+				"serviceName"
+			],
+			[
+				"servi",
+				"serviceName"
+			],
+			[
+				"json",
+				"jQuery.parseJSON	jQuery.parseJSON"
+			],
+			[
+				"call",
+				"callbackDone"
+			],
+			[
+				"url",
+				"urlService"
+			],
+			[
+				"s",
+				"span	<span>"
+			],
+			[
+				"html",
+				"html5	Simple HTML5 Boilerplate"
+			],
+			[
+				"Contac",
+				"ContactEmployeur"
+			],
+			[
+				"Compe",
+				"CompetenceTechnique"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"head",
+				"header	<header>"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"link",
+				"link	link - stylesheet"
+			],
+			[
+				"_",
+				"_applicationTitre"
+			],
+			[
+				"core",
+				"core_path"
+			],
+			[
+				"image_",
+				"image_0"
+			],
+			[
+				"fist",
+				"firstname"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"value",
+				"value"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"exp",
+				"experience"
+			],
+			[
+				"exe",
+				"experiences"
+			],
+			[
+				"desc",
+				"description"
+			],
+			[
+				"proj",
+				"project"
+			],
+			[
+				"formation",
+				"formationInitiale"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"certi",
+				"certification"
+			],
+			[
+				"padding-",
+				"padding-bottom"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"o",
+				"observableArray"
+			],
+			[
+				"data_f",
+				"data_certifications"
+			],
+			[
+				"CSS",
+				"CSS_"
+			],
+			[
+				"la",
+				"labelMention"
+			],
+			[
+				"sklil",
+				"skills"
+			],
+			[
+				"de",
+				"details"
+			],
+			[
+				"data_",
+				"date_array"
+			],
+			[
+				"sott",
+				"sortDataByAnnee"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
+				"lan",
+				"languages"
+			],
+			[
+				"val",
+				"valeur"
+			],
+			[
+				"proje",
+				"projet"
+			],
+			[
+				"p",
+				"projects"
+			],
+			[
+				"in",
+				"inArray"
+			],
+			[
+				"rg",
+				"right"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"app",
+				"appendTo  (function)"
+			],
+			[
+				"icon",
+				"icon-white"
+			],
+			[
+				"background",
+				"background-position"
+			],
+			[
+				"backg",
+				"background-image"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 6890,
+				"line_ending": "Windows",
+				"name": "index.html"
+			}
+		},
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 871,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/core/jsExtends.js",
+			"settings":
+			{
+				"buffer_size": 119982,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 2901,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/fonctions.js",
+			"settings":
+			{
+				"buffer_size": 779,
+				"line_ending": "Windows",
+				"name": "fonctions.js"
+			}
+		},
+		{
+			"file": "js/core/core.js",
+			"settings":
+			{
+				"buffer_size": 2691,
+				"line_ending": "Windows",
+				"name": "core.js"
+			}
+		},
+		{
+			"file": "js/core/coreScreen.js",
+			"settings":
+			{
+				"buffer_size": 61,
+				"line_ending": "Windows",
+				"name": "coreScreen.js"
+			}
+		},
+		{
+			"file": "js/core/coreServer.js",
+			"settings":
+			{
+				"buffer_size": 1816,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/mock/initialisationBibliotheque.json",
+			"settings":
+			{
+				"buffer_size": 35322,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"cd Packages/",
+			"cd..",
+			"cs..",
+			"cd Packages/",
+			"cd Packages",
+			"cd Packages/"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/vueModel.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/core/jsExtends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/css/style.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/apps.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/core/parameters.json",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/fonctions.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/mock/initialisationBibliotheque.json",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/core/coreServer.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/app.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/mock/mock.json",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/core/coreEnums.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/services.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/core/../parameters.json",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/server.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/serveur.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/mock/initialisationCV.json",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/jquery.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/knockout.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/BDC/js/extends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/vueModele.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/extends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/css/cv_global.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/reglesAffichage.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/index.HTML",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/codes.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Experiences.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.CV.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Filtres.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Formations.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Frise.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Langues.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/jquery.Collaborateur.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/jquery.CV.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/jquery.extends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/jquery.mousewheel.min.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/script_JO.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Collaborateur.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/class.Competences.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/script.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/css/style_CV.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/Functions.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/jquery-1.11.0.min.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/knockout-3.1.0.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV3/js/jquery-2.1.0.min.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/data.js",
+		"/D/UwAmp/www/caroussel/caroussel/php/get2Files.php",
+		"/D/UwAmp/www/caroussel/caroussel/php/functions.php",
+		"/D/UwAmp/www/caroussel/caroussel/caroussel.php",
+		"/D/UwAmp/www/caroussel/caroussel/index.php",
+		"/D/UwAmp/www/caroussel/caroussel/php/scan.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/webapp/js/app.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/webapp/js/appelServeur.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/index.html",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/server/core/TrD.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/class.geolocalisation.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/class.galeries.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/jquery.bloc_galeries.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/webapp/css/style.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/data.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/jquery.bloc_import.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/default.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/app.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/js/default.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/class.photos.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/webapp/js/jquery-2.0.3.min.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/bin/php/php-5.3.5/php_source.ini",
+		"/C/Users/Jonathan/Google Drive/UwAmp/bin/php/php-5.2.17/php_source.ini",
+		"/C/Users/Jonathan/Google Drive/UwAmp/uwamp.ini",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/core/TrD.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/core/DB.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/core/queries.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/controllers/traitements.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/server/model/retourInitialisationEcran.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/model/retourInitialisationEcran.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/core/config.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/photographies/core/traitements.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/class.DB.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/core.js",
+		"/C/Users/Jonathan/Pictures/Logos/contactCard.svg",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/class.Frise.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/utilitaires.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/index.HTML",
+		"/D/UwAmp/www/caroussel/caroussel/php/addNote.php",
+		"/C/Users/Jonathan/Downloads/DisparitionCD.inf",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/class.Filtres.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV2/js/jquery-1.9.1.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/vm.app.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/masonry.pkgd.min.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/jquery.extends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/javascript.extends.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/css/style.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/Archives/script_JO.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/class.Competences.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/script_JO.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/CV/js/script.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/class.DBQuery.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/galerieController.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/jquery.galeries.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/css/default.less",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/index.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/KM/phpclass/class.Article.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/KM/js/class/Article.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/js/jquery.fileupload.js",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/KM/phpclass/class.DBQuery.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/php/DBConnexion.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/css/reset.less",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/css/bootstrap.min.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/css/reset.css",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/index.php",
+		"/C/Users/Jonathan/Google Drive/UwAmp/www/Photos/admin/css/default.css",
+		"/C/UwAmp/www/KM/js/class/Article.js",
+		"/C/UwAmp/www/KM/phpforms/article.show.php",
+		"/C/UwAmp/www/KM/phpclass/class.Article.php",
+		"/C/UwAmp/www/install.bat",
+		"/C/UwAmp/www/Photographies/index.php",
+		"/C/UwAmp/www/Photos/index.php",
+		"/C/UwAmp/www/sss/index.html",
+		"/C/UwAmp/www/ssss/index.html",
+		"/C/UwAmp/www/ss/index.html",
+		"/C/UwAmp/www/t/index.html",
+		"/C/UwAmp/www/s/index.html",
+		"/C/UwAmp/www/tttt/index.html",
+		"/C/UwAmp/www/ttt/index.html",
+		"/C/UwAmp/www/tt/index.html",
+		"/C/UwAmp/www/T/index.html",
+		"/C/UwAmp/www/Test/index.html",
+		"/C/UwAmp/www/Test/index.xhtml",
+		"/C/UwAmp/www/KM/index.php"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+			"C:\\UwAmp\\www\\KM"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"screenCache",
+			"screensContainer",
+			"jQuery.fn.extend",
+			"calc",
+			"Avertissement",
+			"Array.prototype",
+			"initialiserEcran",
+			"swithService",
+			"jQuery.extend",
+			"observable",
+			"observableArray",
+			"observableArray\"",
+			"observale",
+			"determinerAlignementPoints",
+			"vm.listeCompleteRoles",
+			"listeConnaissancesTechniques",
+			"CompetenceTechnique",
+			"codeCompetenceTechnique",
+			"listeRolesProjet",
+			"DomaineTechnique",
+			"DomaineTechniques",
+			"DomainesTechniques",
+			"listeDomainesTechniques",
+			"codeDomaine",
+			"listeDomainesTechniques",
+			"listeDomaines",
+			"svg text.bottom",
+			"libelleRole",
+			"libelleCompetenceTechnique",
+			"roleProjet",
+			"),\n",
+			"determinerPositionPoints",
+			"traceSVGAxes",
+			"determinerLimites",
+			"traceSVGAxes",
+			"indicateurElementsInsuffisants",
+			"determinerPositionPoints",
+			"determinerLimites",
+			"var toRadians",
+			"calculerExperiencePourRole",
+			"listeFormations",
+			"observableArray()",
+			"chart_collaborateur",
+			"getLibelleEmployeurActuel",
+			"codes",
+			"btn-menu",
+			"RolesProjet",
+			"Employeur",
+			"RolesProjet",
+			"logger",
+			"allow_",
+			"allow_include",
+			"allow",
+			"$self",
+			"fstname",
+			"lstname",
+			"mouse",
+			"frise",
+			"hide",
+			"css",
+			"hide",
+			"current_filtre",
+			"dates",
+			"frise",
+			".text_title",
+			"svg",
+			"AI",
+			"classProfils",
+			"Competence",
+			"description",
+			"angle",
+			"sortData",
+			"showStarCompetences(",
+			"showStarCompetences(starProfils);",
+			"var starProfils = getProfilsForStarCompetences();\n    if(starProfils.length){\n        showStarCompetences(starProfils);\n    }else{\n        // message d'erreur\n    }",
+			"showStarCompetences",
+			"click",
+			"nb_pts",
+			"GEEQ",
+			"btn_items",
+			"button",
+			"buuton",
+			"json",
+			"progress",
+			"glyphicons-halflings",
+			"glyphicons-halflings-",
+			"glyphicons-halflings-white",
+			"glyphicons-halflings-white.png",
+			"glyphicons-halflings-white.png\"",
+			"Roboto",
+			"CREATE_REPERTOIRE_MEDIA",
+			"pause -",
+			"??",
+			"acirc",
+			"acric",
+			"h4",
+			"BuildArticlesForJS",
+			"favoris",
+			"max",
+			"min",
+			"popin_comment_list",
+			"commentaire",
+			"UI.Close",
+			"menu",
+			"BuildEmpty",
+			"retour",
+			" '",
+			"Close",
+			"ShowLogo",
+			"HideLogo",
+			"UpdateArticle",
+			"select_token",
+			"add_token",
+			"PortailList",
+			"PortailInfos",
+			"SetJSON",
+			"SetHTML",
+			"UI.Connect",
+			"Action.Disconnect",
+			"getListMotClesForArticle",
+			"getMotCleById",
+			"getTypeById",
+			"updateArticle",
+			"getListArticleByTerms",
+			"getArticleById",
+			"getListArticle",
+			"getCategorieById",
+			"getListCategorie"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ProfilTechnique",
+			"listeProfilsTechniques",
+			"libelleCourtRole",
+			"observableArray([])",
+			"self",
+			"firstname",
+			"lastname",
+			"",
+			"apos",
+			"s",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2687,
+								2687
+							]
+						],
+						"settings":
+						{
+							"auto_name": "index.html",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 680.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 871,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								858,
+								858
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/core/jsExtends.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 119982,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								118185,
+								118185
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 55556.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2901,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1830,
+								1830
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1853.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/fonctions.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 779,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								777,
+								777
+							]
+						],
+						"settings":
+						{
+							"auto_name": "fonctions.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/core/core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2691,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1096,
+								1096
+							]
+						],
+						"settings":
+						{
+							"auto_name": "core.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/core/coreScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 61,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"auto_name": "coreScreen.js",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/core/coreServer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								952,
+								960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "js/mock/initialisationBibliotheque.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 35322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								32224,
+								32232
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 19992.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "BDC.sublime-project",
+	"replace":
+	{
+		"height": 80.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

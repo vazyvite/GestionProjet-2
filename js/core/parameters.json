@@ -1,0 +1,11 @@
+{
+	"appName": "Gestion Projet",
+	"appVersion": "2.0",
+	"urlRootServices": "./js/mock/",
+	"scripts": {
+		"js": ["./js/core/coreServer.js"]
+	},
+	"urlServices": { 
+		"initialiserBibliotheque": "initialisationGestionProjet.json"
+	}
+}
