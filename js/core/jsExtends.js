@@ -3141,6 +3141,28 @@ jQuery.base64 = ( function( $ ) {
 			return false;
 		}
 	};
+
+	Date.prototype.addDays = function(nbJours){
+		if(nbJours !== null && !isNaN(nbJours)){
+			this.setTime(this.getTime() + this.getDate() + (1000 * 60 * 60 * 24) * nbJours)
+		}
+		return this;
+	};
+
+	Date.prototype.addYears = function(nbAnnees){
+		if(nbJours !== null && !isNaN(nbJours)){
+			this.setFullYear(this.getFullYear() + nbAnnees);
+		}
+		return this;
+	};
+
+	Date.prototype.getLitteralDate = function(){
+		return "00".substr(0, 2 - this.getDate().toString().length) + this.getDate();
+	};
+
+	Date.prototype.getLitteralMonth = function(){
+		return "00".substr(0, 2 - (this.getMonth() + 1).toString().length) + (this.getMonth() + 1);
+	};
 })();
 
 // Extensions de l'objet Number
@@ -3248,7 +3270,6 @@ jQuery.extend({
 		return (typeof chaine === "undefined" || chaine === null || chaine === "") ? true : false;
 	}
 });
-
 (function($) {
 	$.coreScreen = function(element, options) {
 		var defaults = { },
@@ -3263,16 +3284,13 @@ jQuery.extend({
 			},
 			$screenContainer = null, $screens = null, $switchCache = null,
 			screenWidth = $element.innerWidth();
-
 		plugin.settings = {};
-
 		plugin.init = function() {
 			plugin.settings = $.extend({}, defaults, options);
 			$element.addClass(classNames.screenCache);
 			attachEvents();
 			initScreenContainer();
 		}
-
 		plugin.goToScreen = function(indexScreen, callback) {
 			if(typeof indexScreen !== "undefined" && indexScreen !== null){
 				var toLeft = screenWidth * indexScreen,
@@ -3292,7 +3310,6 @@ jQuery.extend({
 				});
 			}
 		};
-
 		var initScreenContainer = function() {
 			$element.find('> div').wrapAll($("<div></div>").addClass(classNames.screenContainer));
 			$screenContainer = $element.find("." + classNames.screenContainer).first();
@@ -3300,12 +3317,10 @@ jQuery.extend({
 			initSwitchCache();
 			$screenContainer.width(screenWidth * $screens.size());
 		},
-
 		initSwitchCache = function(){
 			$("<div></div>").addClass(classNames.switchCache).prependTo($screenContainer);
 			$switchCache = $element.find("." + classNames.switchCache).first();
 		},
-
 		initScreens = function(){
 			$screens = $screenContainer.find("> div");
 			$screens.each(function(index){
@@ -3316,7 +3331,6 @@ jQuery.extend({
 			});
 			return $screens;
 		},
-
 		attachEvents = function(){
 			$(window).on("resize", function(){
 				if($element.size()){
@@ -3324,20 +3338,12 @@ jQuery.extend({
 				}
 			});
 		};
-
 		plugin.init();
 	}
-
-	// add the plugin to the jQuery.fn object
 	$.fn.coreScreen = function(options) {
 		return this.each(function() {
 			if (undefined == $(this).data('coreScreen')) {
 				var plugin = new $.coreScreen(this, options);
-				// in the jQuery version of the element
-				// store a reference to the plugin object
-				// you can later access the plugin and its methods and properties like
-				// element.data('pluginName').publicMethod(arg1, arg2, ... argn) or
-				// element.data('pluginName').settings.propertyName
 				$(this).data('coreScreen', plugin);
 			}
 		});
