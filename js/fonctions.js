@@ -71,17 +71,21 @@ function Fonctions(){
 			nbCategories = Math.floor(new Date(dateFin - dateDebut).getTime() / 86400000) + 1;
 			var dateCategorie = new Date(dateDebut);
 			for(i; i < nbCategories; i++){
-					dateCategorieSerie = new Date(dateCategorie.getFullYear() + "-" + dateCategorie.getMonth() + "-" + dateCategorie.getDate()),
+					dateCategorieSerie = new Date(dateCategorie.getFullYear() + "-" + (dateCategorie.getMonth() + 1) + "-" + dateCategorie.getDate()),
 					sommeDeveloppement = 0, sommeCorrection = null;
 				categories.push(dateCategorie.getLitteralDate() + "/" + dateCategorie.getLitteralMonth());
 				for(var h = 0; h < tache.historique().length; h++){
 					var dateHistorique = new Date(tache.historique()[h].dateHistorique()),
-						dateSerie = new Date(dateHistorique.getFullYear() + "-" + dateHistorique.getMonth() + "-" + dateHistorique.getDate());
+						dateSerie = new Date(dateHistorique.getFullYear() + "-" + (dateHistorique.getMonth() + 1) + "-" + dateHistorique.getDate());
 					if(dateCategorieSerie.getTime() == dateSerie.getTime()){
 						if(tache.historique()[h].codeAction() == 0){
 							sommeDeveloppement = (sommeDeveloppement == null) ? tache.historique()[h].chiffrage() : sommeDeveloppement + tache.historique()[h].chiffrage();
 						}else if(tache.historique()[h].codeAction() == 1){
 							sommeCorrection = (sommeCorrection == null) ? tache.historique()[h].chiffrage() : sommeCorrection + tache.historique()[h].chiffrage();
+						}
+					}else{
+						if(dateCategorieSerie.getTime() > new Date(tache.dateFinDev()).getTime() || dateCategorieSerie.getTime() < new Date(tache.dateDebutDev()).getTime()){
+							sommeDeveloppement = null;
 						}
 					}
 				}
@@ -108,6 +112,10 @@ function Fonctions(){
 				}]
 			});
 		}
+	};
+
+	self.miseAJourDiagramme = function(tache){
+		return miseAJourDiagramme(tache);
 	};
 
 	self.getMapTaches = function(){
@@ -154,11 +162,12 @@ function Fonctions(){
 		vm.gestionProjet.tachePointee(dataTache);
 		var tachePointee = vm.gestionProjet.tachePointee();
 		if(!$.isNullOrEmpty(tachePointee.chiffrageResteAFaire())){
+			ko.jsam.copy(tachePointee, vm.svgDataTaches);
 			// tachePointee.chiffrageResteAFaire(parseFloat(tachePointee.chiffrageInitial()) - parseFloat(tachePointee.chiffrageConsomme()));
-			vm.svgDataTaches.chiffrageInitial(ko.toJS(tachePointee.chiffrageInitial()));
-			vm.svgDataTaches.chiffrageConsomme(ko.toJS(tachePointee.chiffrageConsomme()));
-			vm.svgDataTaches.chiffrageResteAFaire(ko.toJS(tachePointee.chiffrageResteAFaire()));
-			vm.svgDataTaches.chiffrageCorrection(ko.toJS(tachePointee.chiffrageCorrection()));
+			// vm.svgDataTaches.chiffrageInitial(new String(tachePointee.chiffrageInitial()));
+			// vm.svgDataTaches.chiffrageConsomme(new String(tachePointee.chiffrageConsomme()));
+			// vm.svgDataTaches.chiffrageResteAFaire(new String(tachePointee.chiffrageResteAFaire()));
+			// vm.svgDataTaches.chiffrageCorrection(new String(tachePointee.chiffrageCorrection()));
 			miseAJourDiagramme(dataTache);
 		}
 		$("#modalTache").modal("show");
