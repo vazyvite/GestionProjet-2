@@ -31,26 +31,50 @@
 									<div class="form-group">
 										<label class="col-xs-4 control-label" for="chargeConsommeeTache">Consommée :</label>
 										<div class="col-xs-2">
-											<input type="text" class="form-control" id="chargeConsommeeTache" step="0.25" min="0" data-bind="value: chiffrageConsomme, disable: fn.ui.disableChargeConsommee($data) ">
+											<input type="text" class="form-control" id="chargeConsommeeTache" data-bind="value: chiffrageConsomme, disable: fn.ui.disableChargeConsommee($data)" />
 										</div>
 										<label class="col-xs-4 control-label" for="chargeEstimeeTache">Estimation initiale :</label>
-										<div class="col-xs-2">
-											<input type="text" class="form-control" id="chargeEstimeeTache" step="0.25" min="0" data-bind="value: chiffrageInitial, disable: fn.ui.disableEstimationInitiale($data)">
-										</div>
+										<!-- ko ifnot: fn.ui.disableEstimationInitiale($data) -->
+											<div class="col-xs-2">
+												<input type="text" class="form-control" id="chargeEstimeeTache" data-bind="value: chiffrageInitial" />
+											</div>
+										<!-- /ko -->
+										<!-- ko if: fn.ui.disableEstimationInitiale($data) -->
+											<div class="col-xs-2">
+												<span class="form-control" data-bind="text: fn.ui.textRecapChiffrage($data)"></span>
+											</div>
+										<!-- /ko -->
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label" for="rafTache">RAF :</label>
 										<div class="col-xs-2">
-											<input type="text" class="form-control" id="rafTache" step="0.25" min="0" data-bind="value: chiffrageResteAFaire, disable: fn.ui.disableRAF($data)">
+											<input type="text" class="form-control" id="rafTache" data-bind="value: chiffrageResteAFaire, disable: fn.ui.disableRAF($data)" />
 										</div>
 										<label class="col-xs-4 control-label" for="chargeCorrections">Corrections :</label>
 										<div class="col-xs-2">
-											<input type="text" class="form-control" id="chargeCorrections" step="0.25" min="0" data-bind="value: chiffrageCorrection">
+											<input type="text" class="form-control" id="chargeCorrections" data-bind="value: chiffrageCorrection, disable: fn.ui.disableChargeCorrection($data)" />
 										</div>
 									</div>
 								</form>
 								<div>
-									<textarea class="readAspect" data-bind="value: descriptionTache" placeholder="description"></textarea>
+									<textarea class="readAspect descriptionTache" data-bind="value: descriptionTache" placeholder="description"></textarea>
+								</div>
+							</div>
+
+							<div class="col-xs-7">
+								<div id="blocEvenements">
+									<!-- ko foreach: listeEvenements -->
+										<div class="tacheEvenement">
+											<div></div>
+											<div>
+												<div>
+													<span class="actionEvenement" data-bind="text: typeEvent()"></span>&nbsp;
+													<span class="descriptionEvenement" data-bind="text: descriptionEvent()"></span>
+												</div>
+												<div class="dateEvenement" data-bind="text: 'le ' + fn.ui.dateText(dateEvent())"></div>
+											</div>
+										</div>
+									<!-- /ko -->
 								</div>
 							</div>
 						</div>

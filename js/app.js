@@ -5,16 +5,16 @@ $(function(){
 		vm.app.appName(window.app.parameters.appName);
 		vm.app.appVersion(window.app.parameters.appVersion);
 		fn.initialisationBibliotheque(function(data){
+			vm.actionCreationTache(true);
 			ko.jsam.copy(data, vm);
 			if(vm.gestionProjet.listeTaches().length){
 				vm.gestionProjet.tacheSelectionnee(vm.gestionProjet.listeTaches()[0]);
 			}
+			vm.actionCreationTache(false);
 		});
 	});
 
 	$("#screenCache").coreScreen();
-	// TODO à décommenter
-	// document.oncontextmenu = function() { return false;};
 
 	$("body").on("click", ".navBtn", function(e){
 		e.preventPropagation();
@@ -34,6 +34,12 @@ $(function(){
 	// clic de validation de la modale d'informations des taches
 	$("body").on("click", "#modalTacheValidation", function(){
 		if(fn.validation.creationTache(vm.gestionProjet.tachePointee())){
+			if(vm.svgDataTaches.chiffrageInitial() != vm.gestionProjet.tachePointee().chiffrageInitial()){
+				var now = new Date().getTime(),
+					typeAction = ($.isNullOrEmpty(vm.svgDataTaches.chiffrageInitial())) ? vm.enums.CODE_ACTION_CHIFFRAGE : vm.enums.CODE_ACTION_RECHIFFRAGE,
+					historique = fn.createHistorique(now, typeAction, null);
+				vm.gestionProjet.tachePointee().historique.push(historique);
+			}
 			vm.gestionProjet.tachePointee(vm.newTache());
 			vm.actionCreationTache(false);
 			$("#modalTache").modal("hide");

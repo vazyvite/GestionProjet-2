@@ -8,18 +8,19 @@ var vm;
 
 		self.enums = {
 			CODE_ACTION_DEVELOPPEMENT: 0,
-			CODE_ACTION_CORRECTION: 0
-		};
-
-		/**
-		 * codeAction : 0: développement, 1: corrections
-		 *
-		 */
-		var Historique = function Historique(){
-			var that = this;
-			that.dateHistorique = ko.observable();
-			that.codeAction = ko.observable();
-			that.chiffrage = ko.observable();
+			CODE_ACTION_CORRECTION: 1,
+			CODE_ACTION_CHIFFRAGE: 2,
+			CODE_ACTION_RECHIFFRAGE: 3,
+			CODE_ACTION_CLOTURE: 4,
+			CODE_ACTION_REOUVERTURE: 5,
+			CODE_ACTION_COMMENTAIRE: 6,
+			LIBELLE_TYPE_EVENT_CHIFFRAGE: "chiffrage",
+			LIBELLE_TYPE_EVENT_RECHIFFRAGE: "rechiffrage",
+			LIBELLE_TYPE_EVENT_DEVELOPPEMENT: "développement",
+			LIBELLE_TYPE_EVENT_CORRECTION: "correction",
+			LIBELLE_TYPE_EVENT_CLOTURE: "cloture",
+			LIBELLE_TYPË_EVENT_REOUVERTURE: "réouverture",
+			LIBELLE_TYPE_EVENT_COMMENTAIRE: "commentaire"
 		};
 
 		var Ressource = function Ressource(){
@@ -27,6 +28,25 @@ var vm;
 			that.idRessource = ko.observable();
 			that.nomRessource = ko.observable();
 			that.prenomRessource = ko.observable();
+		};
+
+		/**
+		 * codeAction : 0: développement, 1: corrections
+		 */
+		var Historique = function Historique(){
+			var that = this;
+			that.dateHistorique = ko.observable();
+			that.codeAction = ko.observable();
+			that.chiffrage = ko.observable();
+			that.contributeur = ko.observable(new Ressource());
+		};
+
+		var Event = function Event(){
+			var that = this;
+			that.contributeur = ko.observable(new Ressource());
+			that.dateEvent = ko.observable();
+			that.typeEvent = ko.observable();
+			that.descriptionEvent = ko.observable();
 		};
 
 		var Tache = function Tache(){
@@ -46,58 +66,63 @@ var vm;
 			that.dateFinDev = ko.observable();
 			that.dateDebutCorrection = ko.observable();
 			that.dateFinCorrection = ko.observable();
+			that.listeEvenements = ko.observableArray([]).extend({ arrayTransformer: function(){ return new Event(); }});
 			that.chiffrageConsomme.subscribe(function(valeur){
 				if(that.idTacheParent() != null){
-					var raf = parseFloat(that.chiffrageResteAFaire()),
-						historique = self.newHistorique(),
-						now = new Date().getTime();
-					if(parseFloat(valeur) > parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
-						raf = raf - (parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
-					}else if(parseFloat(valeur) < parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
-						raf = raf + (parseFloat(vm.svgDataTaches.chiffrageConsomme()) - parseFloat(valeur));
+					if(self.actionCreationTache() == false){
+						var raf = (!isNaN(parseFloat(that.chiffrageResteAFaire()))) ? parseFloat(that.chiffrageResteAFaire()) : 0,
+							now = new Date().getTime();
+						if(parseFloat(valeur) > parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
+							raf = raf - (parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
+						}else if(parseFloat(valeur) < parseFloat(vm.svgDataTaches.chiffrageConsomme())) {
+							raf = raf + (parseFloat(vm.svgDataTaches.chiffrageConsomme()) - parseFloat(valeur));
+						}
+						if(raf < 0){
+							raf = 0;
+						}
+						that.chiffrageResteAFaire(raf);
+						// création d'une entrée dans l'historique
+						var historique = fn.createHistorique(now, self.enums.CODE_ACTION_DEVELOPPEMENT, parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
+						that.historique.push(historique);
+						fn.miseAJourEvenements(that, false, historique);
+						// ajout de la date de début des dévs
+						if($.isNullOrEmpty(that.dateDebutDev())){
+							that.dateDebutDev(now);
+						}
+						// ajout de la date de fin de dév
+						if(parseFloat(that.chiffrageResteAFaire()) == 0){
+							that.dateFinDev(now);
+						}
+						vm.svgDataTaches.chiffrageConsomme(valeur);
+						vm.svgDataTaches.chiffrageResteAFaire(raf);
+						fn.miseAJourDiagramme(that);
 					}
-					if(raf < 0){
-						raf = 0;
-					}
-					that.chiffrageResteAFaire(raf);
-					// création d'une entrée dans l'historique
-					historique.dateHistorique(now);
-					historique.codeAction(self.enums.CODE_ACTION_DEVELOPPEMENT);
-					historique.chiffrage(parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageConsomme()));
-					that.historique.push(historique);
-					// ajout de la date de début des dévs
-					if($.isNullOrEmpty(that.dateDebutDev())){
-						that.dateDebutDev(now);
-					}
-					// ajout de la date de fin de dév
-					if(parseFloat(that.chiffrageResteAFaire()) == 0){
-						that.dateFinDev(now);
-					}
-					vm.svgDataTaches.chiffrageConsomme(valeur);
-					vm.svgDataTaches.chiffrageResteAFaire(raf);
 					fn.miseAJourTacheParent(that);
-					fn.miseAJourDiagramme(that);
 				}
 			});
 			that.chiffrageResteAFaire.subscribe(function(valeur){
 				if(that.idTacheParent() != null){
 					fn.miseAJourTacheParent(that);
 				}
+				// vm.svgDataTaches.chiffrageResteAFaire(valeur);
+				that.dateFinDev(null);
 			});
 			that.chiffrageCorrection.subscribe(function(valeur){
-				var historique = self.newHistorique(),
-					now = new Date().getTime();
-				// création d'une entrée dans l'historique
-				historique.dateHistorique(now);
-				historique.codeAction(self.enums.CODE_ACTION_CORRECTION);
-				historique.chiffrage(parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageCorrection()));
-				// ajout de la date de début des corrections
-				if($.isNullOrEmpty(that.dateDebutCorrection())){
-					that.dateDebutCorrection(now);
+				var now = new Date().getTime();
+				if(self.actionCreationTache() == false){
+					// création d'une entrée dans l'historique
+					var historique = fn.createHistorique(now, self.enums.CODE_ACTION_CORRECTION, parseFloat(valeur) - parseFloat(vm.svgDataTaches.chiffrageCorrection()));
+					that.historique.push(historique);
+					fn.miseAJourEvenements(that, false, historique);
+					// ajout de la date de début des corrections
+					if($.isNullOrEmpty(that.dateDebutCorrection())){
+						that.dateDebutCorrection(now);
+					}
+					// ajout de la date de fin des corrections
+					that.dateFinCorrection(now);
+					fn.miseAJourDiagramme(that);
 				}
-				// ajout de la date de fin des corrections
-				that.dateFinCorrection(now);
-				fn.miseAJourDiagramme(that);
+				vm.svgDataTaches.chiffrageCorrection(valeur);
 			});
 		};
 
@@ -110,13 +135,11 @@ var vm;
 		self.newHistorique = function(){
 			return new Historique();
 		};
+		self.newEvent = function(){
+			return new Event();
+		};
 
 		self.svgDataTaches = new Tache();
-		// 	chiffrageInitial: ko.observable(),
-		// 	chiffrageConsomme: ko.observable(),
-		// 	chiffrageResteAFaire: ko.observable(),
-		// 	chiffrageCorrection: ko.observable()
-		// };
 
 		/*var Projet = function(){
 			var that = this;
@@ -130,7 +153,8 @@ var vm;
 			listeTaches: ko.observableArray([]).extend({ arrayTransformer: function(){ return new Tache(); }}),
 			listeRessources: ko.observableArray([]).extend({ arrayTransformer: function(){ return new Ressource(); }}),
 			tacheSelectionnee: ko.observable(new Tache()),
-			tachePointee: ko.observable(new Tache())
+			tachePointee: ko.observable(new Tache()),
+			utilisateurCourant: ko.observable(new Ressource())
 		};
 
 		self.app = {

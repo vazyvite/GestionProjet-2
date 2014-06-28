@@ -3102,6 +3102,21 @@ jQuery.base64 = ( function( $ ) {
 	};
 
 	/**
+	 * retourne une date au format jj//mm/aaaa
+	 */
+	Date.prototype.toJJMMAAAADate = function(){
+		var vJour = verifierElementsDate(this.getDate().toString(), 2),
+			vMois = verifierElementsDate(this.getMonth().toString(), 2),
+			vAnnee = verifierElementsDate(this.getFullYear().toString(), 4);
+		return vJour + "/" + vMois + "/" + vAnnee;
+	};
+
+	Date.prototype.toTextualDate = function(){
+		var listeMois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+		return verifierElementsDate(this.getDate().toString(), 2) + " " + listeMois[this.getMonth()] + " " + this.getFullYear();
+	};
+
+	/**
 	 * récupère le temps qui sépares 2 dates
 	 * @param  Date dateDebut La date référence de début
 	 * @param  Date dateFin   la date référence de fin (optionnelle - si non renseignée on se base sur la date du jour)
@@ -3142,6 +3157,10 @@ jQuery.base64 = ( function( $ ) {
 		}
 	};
 
+	/**
+	 * ajoute un certain nombre de jours à une date
+	 * @param {[Integer]} nbJours [le nombre de jours à ajouter]
+	 */
 	Date.prototype.addDays = function(nbJours){
 		if(nbJours !== null && !isNaN(nbJours)){
 			this.setTime(this.getTime() + this.getDate() + (1000 * 60 * 60 * 24) * nbJours)
@@ -3149,6 +3168,10 @@ jQuery.base64 = ( function( $ ) {
 		return this;
 	};
 
+	/**
+	 * ajoute un certain nombre d'année à une date
+	 * @param {[Integer]} nbAnnees [le nombre d'années à ajouter]
+	 */
 	Date.prototype.addYears = function(nbAnnees){
 		if(nbJours !== null && !isNaN(nbJours)){
 			this.setFullYear(this.getFullYear() + nbAnnees);
@@ -3156,12 +3179,18 @@ jQuery.base64 = ( function( $ ) {
 		return this;
 	};
 
+	/**
+	 * retourne le numéro du jour (dans le mois) avec un 0 devant si < 10
+	 */
 	Date.prototype.getLitteralDate = function(){
-		return "00".substr(0, 2 - this.getDate().toString().length) + this.getDate();
+		return verifierElementsDate(this.getDate().toString().substr(0,2), 2);
 	};
 
+	/**
+	 * retourne le numéro du mois avec un 0 devant si < 10
+	 */
 	Date.prototype.getLitteralMonth = function(){
-		return "00".substr(0, 2 - (this.getMonth() + 1).toString().length) + (this.getMonth() + 1);
+		return verifierElementsDate((this.getMonth() + 1).toString().substr(0,2), 2);
 	};
 })();
 

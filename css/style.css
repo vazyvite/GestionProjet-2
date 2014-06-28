@@ -253,3 +253,33 @@ textarea {
 	width: calc(100% - 10px);
 	margin: auto;
 }
+span.form-control {
+	border-color: #FFF;
+	box-shadow: none;
+	font-weight: bold;
+}
+.descriptionTache {
+	height: 100px;
+}
+#blocEvenements {
+	border: 1px solid #e5e6e9;
+	background-color: #f6f7f8;
+	margin-right: 15px;
+}
+#blocEvenements .tacheEvenement {
+	padding: 5px 10px;
+	border-bottom: 1px solid #e5e6e9;
+}
+#blocEvenements .tacheEvenement:last-of-type {
+	border-bottom-width: 0px;
+}
+#blocEvenements .tacheEvenement .actionEvenement {
+	color: #3b5998;
+	font-weight: bold;
+}
+#blocEvenements .tacheEvenement .dateEvenement {
+	color: #9197a3;
+}
+#blocEvenements .tacheEvenement .descriptionEvenement {
+	color: #141823;
+}

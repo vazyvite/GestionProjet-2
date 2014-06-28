@@ -59,6 +59,8 @@ function Fonctions(){
 						consommation = now.addDays(2);
 					}
 					dateFin = new Date(dateDebut).addDays(consommation);
+				}else{
+					dateFin = new Date(tache.dateFinCorrection());
 				}
 			}else{
 				if($.isNullOrEmpty(tache.dateFinCorrection())){
@@ -77,7 +79,7 @@ function Fonctions(){
 				for(var h = 0; h < tache.historique().length; h++){
 					var dateHistorique = new Date(tache.historique()[h].dateHistorique()),
 						dateSerie = new Date(dateHistorique.getFullYear() + "-" + (dateHistorique.getMonth() + 1) + "-" + dateHistorique.getDate());
-					if(dateCategorieSerie.getTime() == dateSerie.getTime()){
+					if(tache.historique()[h].chiffrage() != null && dateCategorieSerie.getTime() == dateSerie.getTime()){
 						if(tache.historique()[h].codeAction() == 0){
 							sommeDeveloppement = (sommeDeveloppement == null) ? tache.historique()[h].chiffrage() : sommeDeveloppement + tache.historique()[h].chiffrage();
 						}else if(tache.historique()[h].codeAction() == 1){
@@ -104,18 +106,67 @@ function Fonctions(){
 				},
 				tooltip: { valueSuffix: 'jour(s)' },
 				series: [{
-					name: 'Développement',
+					name: vm.enums.LIBELLE_TYPE_EVENT_DEVELOPPEMENT,
 					data: serieDev
 				},{
-					name: 'Corrections',
+					name: vm.enums.LIBELLE_TYPE_EVENT_CORRECTION,
 					data: serieCorrection
-				}]
+				}],
+				credits: { enabled: false }
 			});
+		}
+	},
+	creerEvenement = function(historique){
+		var evenement = vm.newEvent();
+		ko.jsam.copy(historique.contributeur(), evenement.contributeur());
+		evenement.dateEvent(ko.toJS(historique.dateHistorique()));
+		nom = historique.contributeur().nomRessource();
+		prenom = historique.contributeur().prenomRessource();
+		if(nom != null){
+			nom = nom.toUpperCase();
+		}
+		if(historique.chiffrage() != null){
+			libelleJour = (parseFloat(historique.chiffrage()) < 2) ? " jour" : " jours";
+			if(historique.codeAction() == vm.enums.CODE_ACTION_DEVELOPPEMENT){
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_DEVELOPPEMENT);
+			}else if(historique.codeAction() == vm.enums.CODE_ACTION_CORRECTION){
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CORRECTION);
+			}
+			evenement.descriptionEvent(prenom + " " + nom + " a passé " + historique.chiffrage() + libelleJour + " en " + evenement.typeEvent());
+		}else{
+			if(historique.codeAction() == vm.enums.CODE_ACTION_CHIFFRAGE){
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CHIFFRAGE);
+				evenement.descriptionEvent(prenom + " " + nom + " a chiffré la tâche.");
+			}else if(historique.codeAction() == vm.enums.CODE_ACTION_RECHIFFRAGE){
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_RECHIFFRAGE);
+				evenement.descriptionEvent(prenom + " " + nom + " a rechiffré la tâche.");
+			}else{
+				evenement.typeEvent(null);
+				evenement.descriptionEvent(null);
+			}
+		}
+		return evenement;
+	},
+	miseAJourEvenements = function(tache, isReset, tacheHistorique){
+		if(tache != null){
+			if(isReset){
+				var i = 0;
+				tache.listeEvenements([]);
+				for(i; i < tache.historique().length; i++) {
+					tache.listeEvenements.push(creerEvenement(tache.historique()[i]));
+				}
+			} else if(tacheHistorique != null){
+				historique = tacheHistorique;
+				tache.listeEvenements.push(creerEvenement(tacheHistorique));
+			}
 		}
 	};
 
 	self.miseAJourDiagramme = function(tache){
 		return miseAJourDiagramme(tache);
+	};
+	self.miseAJourEvenements = function(tache, isReset, tacheHistorique){
+		return miseAJourEvenements(tache, isReset, tacheHistorique);
 	};
 
 	self.getMapTaches = function(){
@@ -163,12 +214,8 @@ function Fonctions(){
 		var tachePointee = vm.gestionProjet.tachePointee();
 		if(!$.isNullOrEmpty(tachePointee.chiffrageResteAFaire())){
 			ko.jsam.copy(tachePointee, vm.svgDataTaches);
-			// tachePointee.chiffrageResteAFaire(parseFloat(tachePointee.chiffrageInitial()) - parseFloat(tachePointee.chiffrageConsomme()));
-			// vm.svgDataTaches.chiffrageInitial(new String(tachePointee.chiffrageInitial()));
-			// vm.svgDataTaches.chiffrageConsomme(new String(tachePointee.chiffrageConsomme()));
-			// vm.svgDataTaches.chiffrageResteAFaire(new String(tachePointee.chiffrageResteAFaire()));
-			// vm.svgDataTaches.chiffrageCorrection(new String(tachePointee.chiffrageCorrection()));
 			miseAJourDiagramme(dataTache);
+			miseAJourEvenements(dataTache, true, null);
 		}
 		$("#modalTache").modal("show");
 	};
@@ -213,6 +260,15 @@ function Fonctions(){
 		self.miseAJourTacheParent(tache);
 	};
 
+	self.createHistorique = function(now, codeAction, chiffrage){
+		var historique = vm.newHistorique();
+		historique.dateHistorique(now);
+		historique.codeAction(codeAction);
+		historique.chiffrage(chiffrage);
+		ko.jsam.copy(vm.gestionProjet.utilisateurCourant(), historique.contributeur());
+		return historique;
+	};
+
 	self.ui = {
 		disableEstimationInitiale: function(tache){
 			if(vm.actionCreationTache() == true){
@@ -224,14 +280,32 @@ function Fonctions(){
 			return false;
 		},
 		disableChargeConsommee: function(tache){
-			if(tache != null && tache.listeTaches().length){
-				return true;
+			if(tache != null){
+				if(tache.listeTaches().length){
+					return true;
+				}else if(tache.chiffrageInitial() == null){
+					return true;
+				}
+			}
+			return false;
+		},
+		disableChargeCorrection: function(tache){
+			if(tache != null){
+				if(tache.listeTaches().length){
+					return true;
+				}else if(tache.chiffrageInitial() == null){
+					return true;
+				}
 			}
 			return false;
 		},
 		disableRAF: function(tache){
-			if(tache != null && tache.listeTaches().length){
-				return true;
+			if(tache != null){
+				if(tache.listeTaches().length){
+					return true;
+				}else if(tache.chiffrageInitial() == null){
+					return true;
+				}
 			}
 			return false;
 		},
@@ -323,6 +397,22 @@ function Fonctions(){
 				}
 			}
 			return 0;
+		},
+		textRecapChiffrage: function(tache){
+			if(tache != null){
+				var texte = ($.isNullOrEmpty(tache.dateFinDev())) ? "~" : "";
+				return texte + (parseFloat(tache.chiffrageConsomme()) + parseFloat(tache.chiffrageResteAFaire()) + parseFloat(tache.chiffrageCorrection()) ) + 'j /' + tache.chiffrageInitial();
+			}
+			return "";
+		},
+		dateText: function(date){
+			if(date != null){
+				var dateDate = new Date(date);
+				if(dateDate.isValid()){
+					return dateDate.toTextualDate();
+				}
+			}
+			return null;
 		}
 	};
 

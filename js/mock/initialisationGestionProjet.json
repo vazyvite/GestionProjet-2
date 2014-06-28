@@ -10,14 +10,15 @@
 			"chiffrageResteAFaire": 5,
 			"chiffrageCorrection": 0,
 			"historique": [],
+			"listeEvenements": [],
 			"dateDebutDev": "",
 			"dateFinDev": "",
 			"dateDebutCorrection": "",
 			"dateFinCorrection": "",
 			"ressource": {
 				"idRessource": "R0001",
-				"nomRessource": "nom",
-				"prenomRessource": "prénom"
+				"nomRessource": "JACQUES",
+				"prenomRessource": "Jonathan"
 			},
 			"idTacheParent": null,
 			"listeTaches": [{
@@ -29,14 +30,15 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": [{
@@ -48,14 +50,15 @@
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
 					"historique": [],
+					"listeEvenements": [],
 					"dateDebutDev": "",
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
-						"nomRessource": "nom",
-						"prenomRessource": "prénom"
+						"nomRessource": "JACQUES",
+						"prenomRessource": "Jonathan"
 					},
 					"idTacheParent": "T00000002",
 					"listeTaches": [{
@@ -67,14 +70,15 @@
 						"chiffrageResteAFaire": 5,
 						"chiffrageCorrection": 0,
 						"historique": [],
+						"listeEvenements": [],
 						"dateDebutDev": "",
 						"dateFinDev": "",
 						"dateDebutCorrection": "",
 						"dateFinCorrection": "",
 						"ressource": {
 							"idRessource": "R0001",
-							"nomRessource": "nom",
-							"prenomRessource": "prénom"
+							"nomRessource": "JACQUES",
+							"prenomRessource": "Jonathan"
 						},
 						"idTacheParent": "T00000020",
 						"listeTaches": []
@@ -89,36 +93,67 @@
 						"historique": [{
 							"dateHistorique": 1402012800000,
 							"codeAction": 0,
-							"chiffrage": 0.25
+							"chiffrage": 0.25,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						},{
 							"dateHistorique": 1402099200000,
 							"codeAction": 0,
-							"chiffrage": 0.5
+							"chiffrage": 0.5,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						},{
 							"dateHistorique": 1402272000000,
 							"codeAction": 0,
-							"chiffrage": 1
+							"chiffrage": 1,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						},{
 							"dateHistorique": 1402358400000,
 							"codeAction": 0,
-							"chiffrage": 1.75
+							"chiffrage": 1.75,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						},{
 							"dateHistorique": 1402790400000,
 							"codeAction": 1,
-							"chiffrage": 0.5
+							"chiffrage": 0.5,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						},{
 							"dateHistorique": 1402876800000,
 							"codeAction": 1,
-							"chiffrage": 1
+							"chiffrage": 1,
+							"contributeur": {
+								"idRessource": "R0001",
+								"nomRessource": "JACQUES",
+								"prenomRessource": "Jonathan"
+							}
 						}],
+						"listeEvenements": [],
 						"dateDebutDev": 1402012800000,
 						"dateFinDev": 1402358400000,
 						"dateDebutCorrection": 1402790400000,
 						"dateFinCorrection": 1402876800000,
 						"ressource": {
 							"idRessource": "R0001",
-							"nomRessource": "nom",
-							"prenomRessource": "prénom"
+							"nomRessource": "JACQUES",
+							"prenomRessource": "Jonathan"
 						},
 						"idTacheParent": "T00000020",
 						"listeTaches": []
@@ -132,14 +167,15 @@
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
 					"historique": [],
+					"listeEvenements": [],
 					"dateDebutDev": "",
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
-						"nomRessource": "nom",
-						"prenomRessource": "prénom"
+						"nomRessource": "JACQUES",
+						"prenomRessource": "Jonathan"
 					},
 					"idTacheParent": "T00000002",
 					"listeTaches": []
@@ -152,14 +188,15 @@
 					"chiffrageResteAFaire": 5,
 					"chiffrageCorrection": 0,
 					"historique": [],
+					"listeEvenements": [],
 					"dateDebutDev": "",
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
 					"ressource": {
 						"idRessource": "R0001",
-						"nomRessource": "nom",
-						"prenomRessource": "prénom"
+						"nomRessource": "JACQUES",
+						"prenomRessource": "Jonathan"
 					},
 					"idTacheParent": "T00000002",
 					"listeTaches": []
@@ -173,14 +210,15 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": []
@@ -193,14 +231,15 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": []
@@ -213,14 +252,15 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": []
@@ -233,14 +273,15 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": []
@@ -253,24 +294,30 @@
 				"chiffrageResteAFaire": 5,
 				"chiffrageCorrection": 0,
 				"historique": [],
+				"listeEvenements": [],
 				"dateDebutDev": "",
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
 				"ressource": {
 					"idRessource": "R0001",
-					"nomRessource": "nom",
-					"prenomRessource": "prénom"
+					"nomRessource": "JACQUES",
+					"prenomRessource": "Jonathan"
 				},
 				"idTacheParent": "P0000001",
 				"listeTaches": []
 			}]
 		}],
 		"listeRessources": [{
-			"idRessource": "R001",
+			"idRessource": "R00000001",
 			"nomRessource": "Jacques",
 			"prenomRessource": "Jonathan"
 		}],
-		"tachePointee": null
+		"tachePointee": null,
+		"utilisateurCourant": {
+			"idRessource": "R00000001",
+			"nomRessource": "Jacques",
+			"prenomRessource": "Jonathan"
+		}
 	}
 }
