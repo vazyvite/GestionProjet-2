@@ -33,7 +33,7 @@ $(function(){
 
 	// clic de validation de la modale d'informations des taches
 	$("body").on("click", "#modalTacheValidation", function(){
-		if(fn.validation.creationTache(vm.gestionProjet.tachePointee())){
+		if(fn.validation.scenario.creationTache(vm.gestionProjet.tachePointee())){
 			var mapTaches = fn.getMapTaches();
 			if(mapTaches != null){
 				var tacheSource = mapTaches[vm.gestionProjet.tachePointee().idTache()];
@@ -117,14 +117,17 @@ $(function(){
 				}
 				tache.chiffrageResteAFaire(raf);
 				// ajout de la date de début des dévs
-				if($.isNullOrEmpty(tache.dateDebutDev())){
+				if($.isNullOrEmpty(tache.dateDebutDev()) || now < tache.dateDebutDev()){
 					tache.dateDebutDev(now);
 				}
 				// ajout de la date de fin de dév
+				if(!$.isNullOrEmpty(tache.dateFinDev()) && tache.dateFinDev() < now){
+					tache.dateFinDev(now);
+				}
 				if(parseFloat(tache.chiffrageResteAFaire()) == 0){
 					tache.dateFinDev(now);
 				}
-				fn.miseAJourDiagramme(tache);
+				// fn.miseAJourDiagramme(tache);
 			}
 			fn.miseAJourTacheParent(tache);
 		}
@@ -161,12 +164,12 @@ $(function(){
 		if(vm.actionCreationTache() == false){
 			var now = new Date().getTime();
 			// ajout de la date de début des corrections
-			if($.isNullOrEmpty(tache.dateDebutCorrection())){
+			if($.isNullOrEmpty(tache.dateDebutCorrection()) || now < tache.dateDebutCorrection()){
 				tache.dateDebutCorrection(now);
 			}
 			// ajout de la date de fin des corrections
 			tache.dateFinCorrection(now);
-			fn.miseAJourDiagramme(tache);
+			// fn.miseAJourDiagramme(tache);
 		}
 		// vm.svgDataTaches.chiffrageCorrection(valeur);
 	});
