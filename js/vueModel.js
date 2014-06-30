@@ -64,6 +64,7 @@ var vm;
 			that.dateDebutCorrection = ko.observable();
 			that.dateFinCorrection = ko.observable();
 			that.listeEvenements = ko.observableArray([]).extend({ arrayTransformer: function(){ return new Event(); }});
+			that.indicateurClos = ko.observable();
 		};
 
 		self.newRessource = function(){

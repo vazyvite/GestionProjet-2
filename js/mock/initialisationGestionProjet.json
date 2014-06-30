@@ -15,6 +15,7 @@
 			"dateFinDev": "",
 			"dateDebutCorrection": "",
 			"dateFinCorrection": "",
+			"indicateurClos": false,
 			"ressource": {
 				"idRessource": "R0001",
 				"nomRessource": "JACQUES",
@@ -35,6 +36,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
@@ -55,6 +57,7 @@
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
+					"indicateurClos": false,
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "JACQUES",
@@ -75,6 +78,7 @@
 						"dateFinDev": "",
 						"dateDebutCorrection": "",
 						"dateFinCorrection": "",
+						"indicateurClos": false,
 						"ressource": {
 							"idRessource": "R0001",
 							"nomRessource": "JACQUES",
@@ -150,6 +154,7 @@
 						"dateFinDev": 1402358400000,
 						"dateDebutCorrection": 1402790400000,
 						"dateFinCorrection": 1402876800000,
+						"indicateurClos": false,
 						"ressource": {
 							"idRessource": "R0001",
 							"nomRessource": "JACQUES",
@@ -172,6 +177,7 @@
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
+					"indicateurClos": false,
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "JACQUES",
@@ -193,6 +199,7 @@
 					"dateFinDev": "",
 					"dateDebutCorrection": "",
 					"dateFinCorrection": "",
+					"indicateurClos": false,
 					"ressource": {
 						"idRessource": "R0001",
 						"nomRessource": "JACQUES",
@@ -215,6 +222,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
@@ -236,6 +244,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
@@ -257,6 +266,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
@@ -278,6 +288,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
@@ -299,6 +310,7 @@
 				"dateFinDev": "",
 				"dateDebutCorrection": "",
 				"dateFinCorrection": "",
+				"indicateurClos": false,
 				"ressource": {
 					"idRessource": "R0001",
 					"nomRessource": "JACQUES",
