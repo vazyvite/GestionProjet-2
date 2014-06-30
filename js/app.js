@@ -42,6 +42,7 @@ $(function(){
 					ko.jsam.copy(vm.gestionProjet.tachePointee(), tacheSource);
 					ko.jsam.copy(vm.newTache(), vm.gestionProjet.tachePointee());
 					ko.jsam.copy(vm.newTache(), vm.svgDataTaches);
+					fn.miseAJourTacheParent(tacheSource);
 					vm.actionCreationTache(false);
 				}
 			}
@@ -50,23 +51,23 @@ $(function(){
 	});
 
 	$("body").on("click", "#modalTacheAnnulation", function(){
-		// var mapTache = fn.getMapTaches();
-		// if(mapTache != null){
-			if(!vm.actionCreationTache() == false){
-				// var tache = mapTache[vm.gestionProjet.tachePointee().idTache()];
-				// if(tache){
-				// 	fn.reinitialiserTache(vm.svgDataTaches, tache);
-				// }
-				// vm.gestionProjet.tachePointee(vm.svgDataTaches);
-			// }else{
-				// TODO cas de la suppression de tâche
-				// fn.supprimerTache(data);
-				vm.actionCreationTache(false);
+		if(vm.actionCreationTache() == true){
+			var mapTache = fn.getMapTaches();
+			if(mapTache != null){
+				var tacheParent = mapTache[vm.gestionProjet.tachePointee().idTacheParent()],
+					tache = mapTache[vm.gestionProjet.tachePointee().idTache()];
+				if(tacheParent != null && tache != null){
+					tacheParent.listeTaches.remove(tache);
+					if(!vm.gestionProjet.tacheSelectionnee().listeTaches().length && vm.gestionProjet.tacheSelectionnee().idTacheParent() != null){
+						fn.changerContexteTache(vm.gestionProjet.tacheSelectionnee().idTacheParent(), false);
+					}
+				}
 			}
-			ko.jsam.copy(vm.newTache(), vm.gestionProjet.tachePointee());
-			ko.jsam.copy(vm.newTache(), vm.svgDataTaches);
-			$("#modalTache").modal("hide");
-		// }
+			vm.actionCreationTache(false);
+		}
+		ko.jsam.copy(vm.newTache(), vm.gestionProjet.tachePointee());
+		ko.jsam.copy(vm.newTache(), vm.svgDataTaches);
+		$("#modalTache").modal("hide");
 	});
 
 	// clic sur le bouton de retour vers la tache parent
@@ -129,7 +130,7 @@ $(function(){
 				}
 				// fn.miseAJourDiagramme(tache);
 			}
-			fn.miseAJourTacheParent(tache);
+			// fn.miseAJourTacheParent(tache);
 		}
 	});
 
@@ -143,9 +144,9 @@ $(function(){
 	$("body").on("change", "#rafTache", function(){
 		var valeur = $(this).val(),
 			tache = ko.dataFor(this);
-		if(tache.idTacheParent() != null){
-			fn.miseAJourTacheParent(tache);
-		}
+		// if(tache.idTacheParent() != null){
+		// 	fn.miseAJourTacheParent(tache);
+		// }
 		if(vm.actionCreationTache() == false && valeur != 0){
 			tache.dateFinDev(null);
 		}

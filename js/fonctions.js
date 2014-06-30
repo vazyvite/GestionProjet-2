@@ -306,7 +306,7 @@ function Fonctions(){
 		vm.gestionProjet.tacheSelectionnee().listeTaches.push(nouvelleTache);
 		dataNouvelleTache = ko.dataFor($(".tache[data-tache=" + nouvelleTache.idTache() + "]")[0]);
 		self.afficherModalTache(dataNouvelleTache);
-		self.miseAJourTacheParent(dataNouvelleTache);
+		// self.miseAJourTacheParent(dataNouvelleTache);
 	};
 
 	/**
@@ -325,7 +325,7 @@ function Fonctions(){
 		self.changerContexteTache(tacheParent, true);
 		dataNouvelleTache = ko.dataFor($(".tache[data-tache=" + nouvelleTache.idTache() + "]")[0]);
 		self.afficherModalTache(dataNouvelleTache);
-		self.miseAJourTacheParent(dataNouvelleTache);
+		// self.miseAJourTacheParent(dataNouvelleTache);
 	};
 
 	self.supprimerTache = function(tache){
@@ -546,6 +546,16 @@ function Fonctions(){
 	};
 
 	self.validation = {
+		initialiserFormulaire: function(listeSelecteursFomulaire){
+			if(listeSelecteursFomulaire.length){
+				$(listeSelecteursFomulaire.join(",")).removeClass('has-error');
+			}
+		},
+		gestionErreursIHM: function(selecteurChamp){
+			if(selecteurChamp != null && $(selecteurChamp).size()){
+				$(selecteurChamp).addClass('has-error');
+			}
+		},
 		test : {
 			required: function(tache, nomChamp, messageErreur){
 				if (tache != null && nomChamp != null && tache.hasOwnProperty(nomChamp) && $.isNullOrEmpty(tache[nomChamp]())) {

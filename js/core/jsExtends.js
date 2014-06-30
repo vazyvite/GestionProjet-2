@@ -3269,8 +3269,10 @@ jQuery.base64 = ( function( $ ) {
 	Array.prototype.pushNotNull = function(value){
 		if(value != null){
 			this.push(value);
+			return this;
+		}else{
+			return false;
 		}
-		return this;
 	};
 })();
 
