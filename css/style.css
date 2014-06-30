@@ -206,7 +206,7 @@ select.readAspect {
  * -- CSS Onglets
  */
 
-.modal-dialog {
+#modalTache .modal-dialog {
 	width: 90%;
 }
 

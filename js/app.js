@@ -128,9 +128,7 @@ $(function(){
 				if(parseFloat(tache.chiffrageResteAFaire()) == 0){
 					tache.dateFinDev(now);
 				}
-				// fn.miseAJourDiagramme(tache);
 			}
-			// fn.miseAJourTacheParent(tache);
 		}
 	});
 
@@ -144,9 +142,6 @@ $(function(){
 	$("body").on("change", "#rafTache", function(){
 		var valeur = $(this).val(),
 			tache = ko.dataFor(this);
-		// if(tache.idTacheParent() != null){
-		// 	fn.miseAJourTacheParent(tache);
-		// }
 		if(vm.actionCreationTache() == false && valeur != 0){
 			tache.dateFinDev(null);
 		}
@@ -170,8 +165,10 @@ $(function(){
 			}
 			// ajout de la date de fin des corrections
 			tache.dateFinCorrection(now);
-			// fn.miseAJourDiagramme(tache);
 		}
-		// vm.svgDataTaches.chiffrageCorrection(valeur);
+	});
+
+	$("body").on("click", "#modalTacheEvolution", function(){
+		alert("TODO::Action Creation Evolution");
 	});
 });
