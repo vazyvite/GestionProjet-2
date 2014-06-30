@@ -36,70 +36,111 @@ function Fonctions(){
 	},
 	miseAJourDiagramme = function(tache){
 		if(tache != null){
-			var categories = [],
+			var axe_x = [],
 				serieDev = [],
 				serieCorrection = [],
 				dateDebut = null, dateFin = null,
 				now = new Date(),
-				nbCategories = 0, i = 0;
-			if($.isNullOrEmpty(tache.dateDebutDev())){
-				dateDebut = ($.isNullOrEmpty(tache.dateDebutCorrection())) ? now.addDays(-1) : tache.dateDebutCorrection();
-			}else{
-				if($.isNullOrEmpty(tache.dateDebutCorrection())){
-					dateDebut = tache.dateDebutDev();
-				}else{
-					dateDebut = (tache.dateDebutDev() < tache.dateDebutCorrection()) ? tache.dateDebutDev() : tache.dateDebutCorrection();
+				nbJours = 0, i = 0,
+				listeDates = [tache.dateDebutDev(), tache.dateDebutCorrection(), tache.dateFinDev(), tache.dateFinCorrection()],
+				dateCategorie = null;
+			for(i; i < tache.historique().length; i++){
+				if(!$.isNullOrEmpty(tache.historique()[i])){
+					if((dateDebut == null) || (new Date(tache.historique()[i].dateHistorique()).getTime() < new Date(dateDebut).getTime())){
+						dateDebut = new Date(tache.historique()[i].dateHistorique());
+					}
+					if((dateFin == null) || (new Date(tache.historique()[i].dateHistorique()).getTime() > new Date(dateFin).getTime())){
+						dateFin = new Date(tache.historique()[i].dateHistorique());
+					}
 				}
 			}
-			dateDebut = new Date(dateDebut);
-			if($.isNullOrEmpty(tache.dateFinDev())){
-				if($.isNullOrEmpty(tache.dateFinCorrection())){
-					var consommation = parseFloat(tache.chiffrageConsomme()) + parseFloat(tache.chiffrageResteAFaire()) + parseFloat(tache.chiffrageCorrection());
+			/*for(i; i < listeDates.length; i++){
+				if(!$.isNullOrEmpty(listeDates[i])){
+					if((dateDebut == null) || (new Date(listeDates[i]).getTime() < new Date(dateDebut).getTime())){
+						dateDebut = new Date(listeDates[i]);
+					}
+					if((dateFin == null) || (new Date(listeDates[i]).getTime() > new Date(dateFin).getTime())){
+						dateFin = new Date(listeDates[i]);
+					}
+				}
+			}*/
+			if(dateDebut == null){
+				dateDebut = now.addDays(-1);
+			}
+			if(dateFin == null){
+				if(!$.isNullOrEmpty(tache.chiffrageConsomme()) && !$.isNullOrEmpty(tache.chiffrageResteAFaire())){
+					var consommation = parseFloat(tache.chiffrageConsomme()) + parseFloat(tache.chiffrageResteAFaire());
+					if(!$.isNullOrEmpty(tache.chiffrageCorrection())){
+						consommation += parseFloat(tache.chiffrageCorrection());
+					}
 					if(consommation < 2){
-						consommation = now.addDays(2);
+						consommation = 2;
 					}
 					dateFin = new Date(dateDebut).addDays(consommation);
 				}else{
-					dateFin = new Date(tache.dateFinCorrection());
-				}
-			}else{
-				if($.isNullOrEmpty(tache.dateFinCorrection())){
-					dateFin = tache.dateFinDev();
-				}else{
-					dateFin = (tache.dateFinDev() > tache.dateFinCorrection()) ? tache.dateFinDev() : tache.dateFinCorrection();
+					dateFin = new Date(dateDebut).addDays(2);
 				}
 			}
-			dateFin = new Date(dateFin);
-			nbCategories = Math.floor(new Date(dateFin - dateDebut).getTime() / 86400000) + 1;
-			var dateCategorie = new Date(dateDebut);
-			for(i; i < nbCategories; i++){
-					dateCategorieSerie = new Date(dateCategorie.getFullYear() + "-" + (dateCategorie.getMonth() + 1) + "-" + dateCategorie.getDate()),
-					sommeDeveloppement = 0, sommeCorrection = null;
-				categories.push(dateCategorie.getLitteralDate() + "/" + dateCategorie.getLitteralMonth());
-				for(var h = 0; h < tache.historique().length; h++){
-					var dateHistorique = new Date(tache.historique()[h].dateHistorique()),
-						dateSerie = new Date(dateHistorique.getFullYear() + "-" + (dateHistorique.getMonth() + 1) + "-" + dateHistorique.getDate());
-					if(tache.historique()[h].chiffrage() != null && dateCategorieSerie.getTime() == dateSerie.getTime()){
-						if(tache.historique()[h].codeAction() == 0){
-							sommeDeveloppement = (sommeDeveloppement == null) ? tache.historique()[h].chiffrage() : sommeDeveloppement + tache.historique()[h].chiffrage();
-						}else if(tache.historique()[h].codeAction() == 1){
-							sommeCorrection = (sommeCorrection == null) ? tache.historique()[h].chiffrage() : sommeCorrection + tache.historique()[h].chiffrage();
+			if(dateDebut != null && dateFin != null){
+				nbJours = Math.floor(new Date(dateFin - dateDebut).getTime() / 86400000) + 1;
+				dateCategorie = new Date(dateDebut);
+				if(dateCategorie != null && nbJours > 0){
+					for(i = 0; i < nbJours; i++){
+						var sommeDeveloppement = null, sommeCorrection = null;
+						dateJour = new Date(dateCategorie.getFullYear() + "-" + (dateCategorie.getMonth() + 1) + "-" + dateCategorie.getDate());
+						if(dateJour != null){
+							axe_x.push(dateJour.getLitteralDate() + "/" + dateJour.getLitteralMonth());
+							for(var h = 0; h < tache.historique().length; h++){
+								var historique = tache.historique()[h],
+									dateHisto = new Date(historique.dateHistorique());
+								if(dateHisto != null){
+									var dateHistorique = new Date(dateHisto.getFullYear() + "-" + (dateHisto.getMonth() + 1) + "-" + dateHisto.getDate());
+									if(dateHistorique != null && dateJour.getTime() == dateHistorique.getTime()){
+										switch (historique.codeAction()){
+											case vm.enums.CODE_ACTION_DEVELOPPEMENT:
+												if(historique.chiffrage() != null){
+													if(sommeDeveloppement == null){
+														sommeDeveloppement = parseFloat(historique.chiffrage());
+													}else{
+														sommeDeveloppement += parseFloat(historique.chiffrage());
+													}
+												}
+											break;
+											case vm.enums.CODE_ACTION_CORRECTION:
+												if(historique.chiffrage() != null){
+													if(sommeCorrection == null){
+														sommeCorrection = parseFloat(historique.chiffrage());
+													}else{
+														sommeCorrection += parseFloat(historique.chiffrage());
+													}
+												}
+											break;
+										}
+									}
+								}
+							}
+							if(sommeDeveloppement == null){
+								if((tache.dateDebutDev() != null && dateJour.getTime() >= tache.dateDebutDev()) && (tache.dateFinDev() != null && dateJour.getTime() <= tache.dateFinDev())){
+									sommeDeveloppement = 0;
+								}
+							}
+							serieDev.push(sommeDeveloppement);
+							if(sommeCorrection == null){
+								if((tache.dateDebutCorrection() != null && dateJour.getTime() >= tache.dateDebutCorrection()) && (tache.dateFinCorrection() != null && dateJour.getTime() <= tache.dateFinCorrection())){
+									sommeCorrection = 0;
+								}
+							}
+							serieCorrection.push(sommeCorrection);
 						}
-					}else{
-						if((!$.isNullOrEmpty(tache.dateFinDev()) && dateCategorieSerie.getTime() > new Date(tache.dateFinDev()).getTime()) || (!$.isNullOrEmpty(tache.dateDebutDev()) && dateCategorieSerie.getTime() < new Date(tache.dateDebutDev()).getTime())){
-							sommeDeveloppement = null;
-						}
+						dateCategorie.addDays(1);
 					}
 				}
-				serieDev.push(sommeDeveloppement);
-				serieCorrection.push(sommeCorrection);
-				dateCategorie.addDays(1);
 			}
 
 			$('#chartdiv').css({"width" : $("#modalTache").width() * .85 }).highcharts({
 				chart: { type: 'spline' },
 				title: { text: null },
-				xAxis: { categories: categories },
+				xAxis: { categories: axe_x },
 				yAxis: {
 					title: { text: 'Jours'  },
 					plotLines: [{ value: 0, width: 1, color: '#808080' }]
@@ -416,7 +457,7 @@ function Fonctions(){
 			return false;
 		},
 		conditionClassFinishedTask: function(tache){
-			if(tache != null && parseFloat(tache.chiffrageResteAFaire()) === 0){
+			if(tache != null && parseFloat(tache.chiffrageResteAFaire()) === 0 && parseFloat(tache.chiffrageInitial()) > 0){
 				return true;
 			}
 			return false;
@@ -526,24 +567,26 @@ function Fonctions(){
 				}
 			}
 		},
-		creationTache: function(tache){
-			if(tache != null){
-				var listeErreur = [];
-				listeErreur.pushNotNull(self.validation.test.required(tache, "nomTache", null));
-				listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageInitial", null));
-				listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageInitial", null));
-				listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageConsomme", null));
-				listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageConsomme", null));
-				listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageResteAFaire", null));
-				listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageResteAFaire", null));
-				listeErreur.pushNotNull(self.validation.test.required(tache, "descriptionTache", null));
-				if(listeErreur.length){
-					alert(listeErreur.join("\n"));
-					return false;
+		scenario: {
+			creationTache: function(tache){
+				if(tache != null){
+					var listeErreur = [];
+					listeErreur.pushNotNull(self.validation.test.required(tache, "nomTache", null));
+					listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageInitial", null));
+					listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageInitial", null));
+					listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageConsomme", null));
+					listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageConsomme", null));
+					listeErreur.pushNotNull(self.validation.test.required(tache, "chiffrageResteAFaire", null));
+					listeErreur.pushNotNull(self.validation.test.isNumeric(tache, "chiffrageResteAFaire", null));
+					listeErreur.pushNotNull(self.validation.test.required(tache, "descriptionTache", null));
+					if(listeErreur.length){
+						alert(listeErreur.join("\n"));
+						return false;
+					}
+					return true;
 				}
-				return true;
+				return false;
 			}
-			return false;
 		}
 	};
 }
