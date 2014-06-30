@@ -86,7 +86,7 @@ function Fonctions(){
 							sommeCorrection = (sommeCorrection == null) ? tache.historique()[h].chiffrage() : sommeCorrection + tache.historique()[h].chiffrage();
 						}
 					}else{
-						if(dateCategorieSerie.getTime() > new Date(tache.dateFinDev()).getTime() || dateCategorieSerie.getTime() < new Date(tache.dateDebutDev()).getTime()){
+						if((!$.isNullOrEmpty(tache.dateFinDev()) && dateCategorieSerie.getTime() > new Date(tache.dateFinDev()).getTime()) || (!$.isNullOrEmpty(tache.dateDebutDev()) && dateCategorieSerie.getTime() < new Date(tache.dateDebutDev()).getTime())){
 							sommeDeveloppement = null;
 						}
 					}
@@ -117,33 +117,53 @@ function Fonctions(){
 		}
 	},
 	creerEvenement = function(historique){
-		var evenement = vm.newEvent();
+		var evenement = vm.newEvent(),
+			libelleJour = (parseFloat(historique.chiffrage()) < 2) ? " jour" : " jours",
+			nom = historique.contributeur().nomRessource(),
+			prenom = historique.contributeur().prenomRessource();
 		ko.jsam.copy(historique.contributeur(), evenement.contributeur());
 		evenement.dateEvent(ko.toJS(historique.dateHistorique()));
-		nom = historique.contributeur().nomRessource();
-		prenom = historique.contributeur().prenomRessource();
 		if(nom != null){
 			nom = nom.toUpperCase();
 		}
-		if(historique.chiffrage() != null){
-			libelleJour = (parseFloat(historique.chiffrage()) < 2) ? " jour" : " jours";
-			if(historique.codeAction() == vm.enums.CODE_ACTION_DEVELOPPEMENT){
-				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_DEVELOPPEMENT);
-			}else if(historique.codeAction() == vm.enums.CODE_ACTION_CORRECTION){
-				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CORRECTION);
-			}
-			evenement.descriptionEvent(prenom + " " + nom + " a passé " + historique.chiffrage() + libelleJour + " en " + evenement.typeEvent());
-		}else{
-			if(historique.codeAction() == vm.enums.CODE_ACTION_CHIFFRAGE){
+		switch (historique.codeAction()){
+			case vm.enums.CODE_ACTION_DEVELOPPEMENT:
+				if(historique.chiffrage() != null){
+					evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_DEVELOPPEMENT);
+					evenement.descriptionEvent(prenom + " " + nom + " a passé " + historique.chiffrage() + libelleJour + " en " + evenement.typeEvent());
+				}
+				break;
+			case vm.enums.CODE_ACTION_CORRECTION:
+				if(historique.chiffrage() != null){
+					evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CORRECTION);
+					evenement.descriptionEvent(prenom + " " + nom + " a passé " + historique.chiffrage() + libelleJour + " en " + evenement.typeEvent());
+				}
+				break;
+			case vm.enums.CODE_ACTION_CHIFFRAGE:
 				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CHIFFRAGE);
 				evenement.descriptionEvent(prenom + " " + nom + " a chiffré la tâche.");
-			}else if(historique.codeAction() == vm.enums.CODE_ACTION_RECHIFFRAGE){
+				break;
+			case vm.enums.CODE_ACTION_RECHIFFRAGE:
 				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_RECHIFFRAGE);
 				evenement.descriptionEvent(prenom + " " + nom + " a rechiffré la tâche.");
-			}else{
+				break;
+			case vm.enums.CODE_ACTION_CLOTURE:
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_CLOTURE);
+				evenement.descriptionEvent(prenom + " " + nom + " a clôturé la tâche.");
+				break;
+			case vm.enums.CODE_ACTION_REOUVERTURE:
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_REOUVERTURE);
+				evenement.descriptionEvent(prenom + " " + nom + " a réouvert la tâche.");
+				break;
+			case vm.enums.CODE_ACTION_COMMENTAIRE:
+				evenement.typeEvent(vm.enums.LIBELLE_TYPE_EVENT_COMMENTAIRE);
+				// TODO gestion du commentaire
+				evenement.descriptionEvent(prenom + " " + nom + "  ");
+				break;
+			default:
 				evenement.typeEvent(null);
 				evenement.descriptionEvent(null);
-			}
+				break;
 		}
 		return evenement;
 	},
@@ -209,17 +229,32 @@ function Fonctions(){
 		}
 	};
 
+	/**
+	 * Initialise et affiche la modale des taches dans le cas d'une visualisation/modification
+	 * @param  {Object} dataTache [les valeurs de la tâche à traiter]
+	 * - isole la tache dans tachePointee
+	 * - sauvegarde de la tache
+	 * - construction du diagramme d'activité
+	 * - construction de la liste des évènements
+	 */
 	self.afficherModalTache = function(dataTache){
-		vm.gestionProjet.tachePointee(dataTache);
+		vm.gestionProjet.tachePointee(vm.newTache());
+		ko.jsam.copy(dataTache, vm.gestionProjet.tachePointee());
 		var tachePointee = vm.gestionProjet.tachePointee();
-		if(!$.isNullOrEmpty(tachePointee.chiffrageResteAFaire())){
+		// if(!$.isNullOrEmpty(tachePointee.chiffrageResteAFaire())){
 			ko.jsam.copy(tachePointee, vm.svgDataTaches);
-			miseAJourDiagramme(dataTache);
-			miseAJourEvenements(dataTache, true, null);
-		}
+			miseAJourDiagramme(tachePointee);
+			miseAJourEvenements(tachePointee, true, null);
+		// }
 		$("#modalTache").modal("show");
 	};
 
+	/**
+	 * initialise et affiche la modale des taches dans le cas d'une création
+	 * - initialisation d'une nouvelle tache
+	 * - affichage de la modale des taches
+	 * - mise à jour de la tache parent
+	 */
 	self.creerNouvelleTache = function(){
 		vm.actionCreationTache(true);
 		var nouvelleTache = vm.newTache(),
@@ -233,7 +268,12 @@ function Fonctions(){
 		self.miseAJourTacheParent(dataNouvelleTache);
 	};
 
+	/**
+	 * initialise et affiche la modale des taches dans le cas d'une création de tache enfant
+	 * @param  {[jQueryObject]} tache [la tache parent]
+	 */
 	self.creerNouvelleTacheFille = function(tache){
+		vm.actionCreationTache(true);
 		var nouvelleTache = vm.newTache(),
 			idTache = new Date().getTime(),
 			tacheParent = ko.dataFor(tache),
@@ -260,6 +300,20 @@ function Fonctions(){
 		self.miseAJourTacheParent(tache);
 	};
 
+	self.reinitialiserTache = function(tacheSource, tacheCible){
+		tacheCible.nomTache(ko.toJS(tacheSource.nomTache()));
+		tacheCible.chiffrageInitial(ko.toJS(tacheSource.chiffrageInitial()))
+		tacheCible.chiffrageConsomme(ko.toJS(tacheSource.chiffrageConsomme()));
+		tacheCible.chiffrageResteAFaire(ko.toJS(tacheSource.chiffrageResteAFaire()));
+		tacheCible.chiffrageCorrection(ko.toJS(tacheSource.chiffrageCorrection()));
+		tacheCible.ressource(ko.toJS(tacheSource.ressource()));
+		tacheCible.descriptionTache(ko.toJS(tacheSource.descriptionTache()));
+		tacheCible.dateDebutDev(ko.toJS(tacheSource.dateDebutDev()));
+		tacheCible.dateFinDev(ko.toJS(tacheSource.dateFinDev()));
+		tacheCible.dateDebutCorrection(ko.toJS(tacheSource.dateDebutCorrection()));
+		tacheCible.dateFinCorrection(ko.toJS(tacheSource.dateFinCorrection()));
+	};
+
 	self.createHistorique = function(now, codeAction, chiffrage){
 		var historique = vm.newHistorique();
 		historique.dateHistorique(now);
@@ -267,6 +321,40 @@ function Fonctions(){
 		historique.chiffrage(chiffrage);
 		ko.jsam.copy(vm.gestionProjet.utilisateurCourant(), historique.contributeur());
 		return historique;
+	};
+
+	self.publishHistorique = function(tache, tacheSauvegardee){
+		if(tache != null && tacheSauvegardee != null){
+			/*
+			x chiffrage (modification du chiffrage initial avec valeur initiale à 0)
+			x rechiffrage (modification du chiffrage initial avec valeur initiale différente de 0)
+			x développement (modification du chiffrage consommé)
+			x correction (modification du chiffrage correction)
+			x fermeture (lorsque le RAF tombe à 0)
+			x réouverture (lorsque le RAF passe de 0 à plus)
+			. commentaire (ajout manuel d'un commentaire)*/
+			var now = new Date().getTime();
+			if(tacheSauvegardee.chiffrageInitial() != tache.chiffrageInitial()){
+				if(tacheSauvegardee.chiffrageInitial() == 0){
+					tache.historique.push(fn.createHistorique(now, vm.enums.CODE_ACTION_CHIFFRAGE, null));
+				}else if(tacheSauvegardee.chiffrageInitial() > 0){
+					tache.historique.push(fn.createHistorique(now, vm.enums.CODE_ACTION_RECHIFFRAGE, null));
+				}
+			}
+			if(tacheSauvegardee.chiffrageConsomme() != tache.chiffrageConsomme()){
+				tache.historique.push(fn.createHistorique(now, vm.enums.CODE_ACTION_DEVELOPPEMENT, parseFloat(tache.chiffrageConsomme()) - parseFloat(tacheSauvegardee.chiffrageConsomme())));
+			}
+			if(tacheSauvegardee.chiffrageCorrection() != tache.chiffrageCorrection()){
+				tache.historique.push(fn.createHistorique(now, vm.enums.CODE_ACTION_CORRECTION, parseFloat(tache.chiffrageCorrection()) - parseFloat(tacheSauvegardee.chiffrageCorrection())));
+			}
+			if(tacheSauvegardee.chiffrageResteAFaire() != tache.chiffrageResteAFaire() && (parseFloat(tacheSauvegardee.chiffrageResteAFaire()) - parseFloat(tache.chiffrageResteAFaire()) == parseFloat(tache.chiffrageConsomme()) - parseFloat(tacheSauvegardee.chiffrageConsomme()))) {
+				if(tache.chiffrageResteAFaire() == 0){
+					tache.historique.push(fn.createHistorique(now, vm.enums.CODE_ACTION_CLOTURE, null));
+				}else if(tacheSauvegardee.chiffrageResteAFaire() == 0){
+					tache.historique.push(fn.createHistorique(now, vm.enums.LIBELLE_TYPE_EVENT_REOUVERTURE, null));
+				}
+			}
+		}
 	};
 
 	self.ui = {
