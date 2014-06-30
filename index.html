@@ -59,6 +59,11 @@
 								<div>
 									<textarea class="readAspect descriptionTache" data-bind="value: descriptionTache" placeholder="description"></textarea>
 								</div>
+								<!-- ko if: $root.actionCreationTache() == false -->
+									<div>
+										<button type="button" class="btn btn-success" id="modalTacheEvolution"><span class="glyphicon glyphicon-plus"></span> Ajouter une Evolution</button>
+									</div>
+								<!-- /ko -->
 							</div>
 
 							<div class="col-xs-7">
@@ -80,8 +85,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="modalTacheValidation">Valider</button>
-						<button type="button" class="btn btn-default" id="modalTacheAnnulation">Annuler</button>
+						<button type="button" class="btn btn-danger btn-lg" id="modalTacheValidation">Valider</button>
+						<button type="button" class="btn btn-link btn-lg" id="modalTacheAnnulation">Annuler</button>
 					</div>
 				</div>
 			</div>
